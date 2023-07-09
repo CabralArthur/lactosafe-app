@@ -9,6 +9,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _indiceAtual = 0;
+
+  void onTabTapped(int index) {
+    setState(() {
+      _indiceAtual = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +35,15 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Container(width: double.maxFinite, child: ListView()),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Camera'),
-        BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa')
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _indiceAtual,
+        onTap: onTabTapped,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Camera'),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa')
+        ],
+      ),
     );
   }
 }
