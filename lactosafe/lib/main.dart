@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
         title: 'LactoSafe',
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
-              backgroundColor: Color.fromARGB(255, 99, 85, 207)),
+              elevation: 0,
+              backgroundColor: Color.fromARGB(239, 249, 249, 249)),
         ),
         initialRoute: HomePage.routeName,
         routes: {
