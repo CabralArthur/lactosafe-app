@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lactosafe/src/view/home_page_view.dart';
+import 'package:lactosafe/src/view/home_page.dart';
 
 void main() {
   runApp(const MyApp());
