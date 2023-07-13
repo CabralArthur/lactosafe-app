@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:lactosafe/src/view/camera_view.dart';
 import 'package:lactosafe/src/view/home_page_view.dart';
+import 'package:lactosafe/src/view/map_page_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const List _pages = [HomePageBody(), CameraPage(), MapPage()];
   int _indiceAtual = 0;
 
   void onTabTapped(int index) {
@@ -36,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: HomePageBody(),
+      body: _pages.elementAt(_indiceAtual),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceAtual,
         onTap: onTabTapped,
