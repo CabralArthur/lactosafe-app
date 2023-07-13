@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:lactosafe/src/view/camera_view.dart';
 import 'package:lactosafe/src/view/home_page_view.dart';
