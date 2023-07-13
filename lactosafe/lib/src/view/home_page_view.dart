@@ -9,13 +9,6 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> {
   @override
-  List<String> filterNames = [
-    "Muito Alto",
-    "Alto",
-    "Médio",
-    "Baixo",
-    "Inexistente"
-  ];
   Widget build(BuildContext Context) {
     return Scaffold(
       body: ListView(
@@ -137,19 +130,19 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
 
           // filtro de pesquisa
-          SizedBox(
-            //height: 26,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                buildFilter('MUITO ALTO'),
-                buildFilter('ALTO'),
-                buildFilter('ALTO'),
-                buildFilter('ALTO'),
-                buildFilter('ALTO')
-              ],
-            ),
-          )
+          // SizedBox(
+          //   //height: 26,
+          //   child: ListView(
+          //     scrollDirection: Axis.horizontal,
+          //     children: <Widget>[
+          //       buildFilter('MUITO ALTO'),
+          //       buildFilter('ALTO'),
+          //       buildFilter('ALTO'),
+          //       buildFilter('ALTO'),
+          //       buildFilter('ALTO')
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );
