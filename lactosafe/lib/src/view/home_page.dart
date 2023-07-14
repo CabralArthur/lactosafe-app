@@ -91,8 +91,16 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _indiceAtual,
         onTap: onTabTapped,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa')
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.map_outlined,
+              ),
+              label: 'Mapa')
         ],
       ),
     );
