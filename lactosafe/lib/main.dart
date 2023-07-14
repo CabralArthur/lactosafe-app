@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lactosafe/src/view/home_page.dart';
+import 'package:lactosafe/src/view/info_alimento_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         initialRoute: HomePage.routeName,
         routes: {
           HomePage.routeName: (context) => const HomePage(),
+          InfoAlimentoPage.routeName: (context) => const InfoAlimentoPage(),
         });
   }
 }
