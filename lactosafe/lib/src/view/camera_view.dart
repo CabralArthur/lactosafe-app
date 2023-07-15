@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
+  static const routeName = '/camera';
 
   @override
   State<CameraPage> createState() => _CameraPageState();
@@ -16,7 +17,6 @@ class _CameraPageState extends State<CameraPage> {
 
   void takePicture() async {
     imageTemporary = await ImagePicker().pickImage(source: ImageSource.camera);
-    //if (image == null) return;
 
     setState(() {
       image = imageTemporary;
