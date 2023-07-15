@@ -1,7 +1,7 @@
+import 'package:LactoSafe/src/view/camera_view.dart';
 import 'package:LactoSafe/src/view/home_page.dart';
+import 'package:LactoSafe/src/view/info_food_view.dart';
 import 'package:flutter/material.dart';
-import 'package:lactosafe/src/view/home_page.dart';
-import 'package:lactosafe/src/view/info_alimento_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         initialRoute: HomePage.routeName,
         routes: {
           HomePage.routeName: (context) => const HomePage(),
-          InfoAlimentoPage.routeName: (context) => const InfoAlimentoPage(),
+          InfoFoodPage.routeName: (context) => const InfoFoodPage(),
+          CameraPage.routeName: (context) => const CameraPage(),
         });
   }
 }
