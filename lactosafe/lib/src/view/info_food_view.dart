@@ -43,7 +43,7 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
   }
 
   Widget buildFoodInformation({required InfoFood food}) {
-    XFile? foodImage = food.getImage;
+    File? foodImage = food.getImage;
     return Container(
       padding: const EdgeInsets.all(30.0),
       alignment: Alignment.topCenter,

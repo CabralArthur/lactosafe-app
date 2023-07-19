@@ -31,10 +31,10 @@ class _HomePageState extends State<HomePage> {
 
     //teste Inviar informações de imagem
     if (image != null) {
-      getFood(File(image!.path));
-      //InfoFood food = InfoFood("Comida", "Texto de ajuda", "80", image);
-      //Foods.add(food);
-      //Navigator.popAndPushNamed(context, '/InfoAlimento');
+      String response = await getFood(File(image!.path));
+      InfoFood food = InfoFood(response, "Texto de ajuda", "80", File(image!.path));
+      Foods.add(food);
+      Navigator.popAndPushNamed(context, '/InfoAlimento');
     }
   }
   //teste
