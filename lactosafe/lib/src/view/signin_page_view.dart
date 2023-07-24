@@ -3,7 +3,7 @@ import 'package:LactoSafe/src/components/custom_text_field.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
-  static const routeName = '/home';
+  static const routeName = '/sigIn';
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -60,7 +60,9 @@ class _SignInState extends State<SignIn> {
                   //Esqueceu a senha
                   Align(
                     alignment: Alignment.centerRight,
-                    child: TextButton(onPressed: () {}, 
+                    child: TextButton(onPressed: () {
+                      Navigator.pushNamed(context, '/resetPassword');
+                    }, 
                     child: const Text('Esqueceu a senha?', 
                     style: TextStyle(
                       color: Colors.deepOrangeAccent), 
