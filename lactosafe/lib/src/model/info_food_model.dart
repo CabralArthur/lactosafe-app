@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class InfoFood {
-  final String _nome;
-  final String _helpText;
-  final String _chanceLactose;
+  String _nome;
+  String _helpText;
+  String _chanceLactose;
   File? _image;
 
   InfoFood(this._nome, this._helpText, this._chanceLactose, this._image);
@@ -15,11 +15,24 @@ class InfoFood {
   String get getChanceLactose => _chanceLactose;
   File? get getImage => _image;
 
-  set setImage(File? image) {
+  void setImage(File? image) {
     _image = image;
   }
+
+  void setNome(String nome) {
+    _nome = nome;
+  }
+
+  void setHelpText(String helpText) {
+    _helpText = helpText;
+  }
+  void setChanceLactose(String chanceLactose) {
+    _chanceLactose = chanceLactose;
+  }
+
+
 }
+
 
 List<InfoFood> Foods = [];
 
-//InfoFood('Teste', 'Text', '8', null)
