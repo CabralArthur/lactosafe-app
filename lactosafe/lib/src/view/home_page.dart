@@ -1,11 +1,11 @@
-import 'dart:io';
-
-import 'package:LactoSafe/src/controller/info_food_controller.dart';
 import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/view/home_page_view.dart';
 import 'package:LactoSafe/src/view/map_page_view.dart';
+import 'package:cross_file/src/types/interface.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
+import '../controller/camera_controller.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,29 +19,8 @@ class _HomePageState extends State<HomePage> {
   static const List _pages = [HomePageBody(), MapPage()];
   int _indiceAtual = 0;
 
-  XFile? image;
-  XFile? imageTemporary;
-
-  void takePicture() async {
-    imageTemporary = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      image = imageTemporary;
-    });
-
-    //teste Inviar informações de imagem
-    if (image != null) {
-      String response = await getFood(File(image!.path));
-      InfoFood food = InfoFood(response, "Texto de ajuda", "80", File(image!.path));
-      Foods.add(food);
-      Navigator.popAndPushNamed(context, '/InfoAlimento');
-    }
-  }
-  //teste
-
   void onTabTapped(int index) {
     setState(() {
-      print(index);
       _indiceAtual = index;
     });
   }
@@ -79,7 +58,8 @@ class _HomePageState extends State<HomePage> {
             child: FittedBox(
                 child: FloatingActionButton.large(
               onPressed: () {
-                takePicture();
+                takePicture(context);
+                
               },
               backgroundColor: const Color(0xFFF08648),
               child: const Icon(
