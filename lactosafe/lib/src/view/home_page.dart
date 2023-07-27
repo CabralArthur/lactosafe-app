@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:LactoSafe/src/controller/info_food_controller.dart';
-import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/view/home_page_view.dart';
 import 'package:LactoSafe/src/view/map_page_view.dart';
 import 'package:flutter/material.dart';
@@ -23,21 +19,13 @@ class _HomePageState extends State<HomePage> {
   XFile? imageTemporary;
 
   void takePicture() async {
-    imageTemporary = await ImagePicker().pickImage(source: ImageSource.gallery);
+    imageTemporary = await ImagePicker().pickImage(source: ImageSource.camera);
+    //if (image == null) return;
 
     setState(() {
       image = imageTemporary;
     });
-
-    //teste Inviar informações de imagem
-    if (image != null) {
-      String response = await getFood(File(image!.path));
-      InfoFood food = InfoFood(response, "Texto de ajuda", "80", File(image!.path));
-      Foods.add(food);
-      Navigator.popAndPushNamed(context, '/InfoAlimento');
-    }
   }
-  //teste
 
   void onTabTapped(int index) {
     setState(() {
@@ -55,11 +43,9 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: EdgeInsets.all(10.0),
                   child: IconButton(
-                    onPressed: () {
-                      Navigator.popAndPushNamed(context, '/InfoAlimento');
-                    },
+                    onPressed: () {},
                     icon: const Icon(
                       Icons.menu,
                       size: 40.0,
@@ -73,7 +59,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _pages.elementAt(_indiceAtual),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: SizedBox(
+        floatingActionButton: Container(
             width: 85.0,
             height: 85.0,
             child: FittedBox(
