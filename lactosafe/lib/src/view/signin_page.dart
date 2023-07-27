@@ -1,5 +1,8 @@
+import 'package:LactoSafe/src/controller/singin_page_controller.dart';
+import 'package:LactoSafe/src/view/begining_page.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
+import 'package:LactoSafe/src/controller/textfield_controller.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -10,6 +13,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final TextFieldController textFieldController = TextFieldController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +51,17 @@ class _SignInState extends State<SignIn> {
                 children: [
                   
                   //Email
-                  const CustomTextField(
+                   CustomTextField(
                     icon: Icons.email,
                     label: 'Email',
+                    controller: textFieldController.emailController
                   ),
                   //Senha
-                  const CustomTextField(
+                   CustomTextField(
                     icon: Icons.lock,
                     label: 'Senha',
                     isObscure: true,
+                    controller: textFieldController.passwordController
                   ),
                   //Esqueceu a senha
                   Align(
@@ -75,7 +81,11 @@ class _SignInState extends State<SignIn> {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18))
                       ),
-                      onPressed: () {}, 
+                      onPressed: () {
+                        String email = textFieldController.getEmailFromTextField();
+                        String password = textFieldController.getPasswordFromTextField();
+                        login(email, password);
+                      }, 
                       child: const Text(
                         'Entrar', style: TextStyle(
                           fontSize: 18
@@ -98,6 +108,7 @@ class _SignInState extends State<SignIn> {
                   InkWell(
                     onTap: (){
                       //Vai pro login com google
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => BeginingPage(),));
                     },
                     child: Container(
                       child: Image.asset(
