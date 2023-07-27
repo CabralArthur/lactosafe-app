@@ -1,7 +1,8 @@
-
+import 'package:LactoSafe/src/view/signin_page_view.dart';
 import 'package:LactoSafe/src/view/camera_view.dart';
 import 'package:LactoSafe/src/view/home_page.dart';
 import 'package:LactoSafe/src/view/info_food_view.dart';
+import 'package:LactoSafe/src/view/reset_password_view.dart';
 import 'package:flutter/material.dart';
 
 
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: SignIn.routeName,
         routes: {
-
+          
+          SignIn.routeName:(context) => const SignIn(),
+          ResetPassword.routeName: (context) => const ResetPassword(),
           HomePage.routeName: (context) => const HomePage(),
           InfoFoodPage.routeName: (context) => const InfoFoodPage(),
           CameraPage.routeName: (context) => const CameraPage(),
