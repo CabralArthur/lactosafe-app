@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:LactoSafe/src/controller/info_food_controller.dart';
 import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class InfoFoodPage extends StatefulWidget {
   const InfoFoodPage({super.key});
@@ -14,8 +12,20 @@ class InfoFoodPage extends StatefulWidget {
 }
 
 class _InfoFoodPageState extends State<InfoFoodPage> {
+
+  
+  late Future _dataFoodInformation;
+  late final File? _foodImage = Foods[0].getImage;
+
+  @override
+  void initState(){
+    super.initState();
+    _dataFoodInformation = setFoodInformation(_foodImage);
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -29,11 +39,11 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
         ),
       ),
       body: FutureBuilder(
-        future: test(),
+        future: _dataFoodInformation,
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
-            return Center(child: CircularProgressIndicator());
-            //return buildFoodInformation(food: Foods[0]);
+            return const Center(child: CircularProgressIndicator());
+            
           } else {
             return buildFoodInformation(food: Foods[0]);
           }
@@ -65,33 +75,36 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
                   fontWeight: FontWeight.w900,
                 ),
               ),
-            ),
-
-            ClipPath(
-              clipper: const ShapeBorderClipper(shape: CircleBorder()),
-              clipBehavior: Clip.hardEdge,
-              child: foodImage != null
-                  ? Image.file(File(foodImage.path),
-                      width: 284, height: 267.67, fit: BoxFit.fitWidth)
-                  : Image.asset("assets/images/CremeDeLeite.png"),
-            ),
-
-            // Container(
-            //   width: 284,
-            //   height: 267.67,
-            //   decoration: const ShapeDecoration(
-            //       color: Color(0xFFD9D9D9),
-            //       shape: OvalBorder(),
-            //       image: DecorationImage(
-            //           image: AssetImage('assets/images/CremeDeLeite.png'))),
-            // ),
-
+            ), 
+            
+            Stack(
+              alignment: Alignment.center,
+              children: 
+              <Widget>[Container(width: 284, height: 267.67, child: ClipPath(
+                clipper: const ShapeBorderClipper(shape: CircleBorder()),
+                clipBehavior: Clip.hardEdge,
+                child: foodImage != null
+                ? Image.file(File(foodImage.path),
+                    width: 284, height: 267.67, fit: BoxFit.fitWidth)
+                : Image.asset("assets/images/CremeDeLeite.png"),
+            ),), 
+              
+            Stack(
+              alignment: Alignment.topRight, 
+              children: <Widget>[ Column(children: [Align(alignment: Alignment.centerRight, child: FloatingActionButton(backgroundColor: Color(0xFFF08648), onPressed: () {}, child: Icon(Icons.favorite),),),
+              const SizedBox(height: 10.0,),
+              Align(alignment: Alignment.bottomRight, child: FloatingActionButton(backgroundColor: Color(0xFFF08648), onPressed: () {}, child: Icon(Icons.question_mark_sharp),),)],) 
+              ],)
+            
+            ]),
+          
+      // TESTE
             // Container(
             //   width: 390,
             //   height: 844,
             //   clipBehavior: Clip.antiAlias,
             //   decoration: ShapeDecoration(
-            //     color: Color.fromARGB(255, 179, 60, 60),
+            //     color: Color.fromARGB(255, 60, 179, 114),
             //     shape: RoundedRectangleBorder(
             //       borderRadius: BorderRadius.circular(30),
             //     ),
