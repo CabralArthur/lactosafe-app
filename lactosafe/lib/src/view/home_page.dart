@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(right: 15.0),
                   child: IconButton(
                     onPressed: () {
-                      Navigator.popAndPushNamed(context, '/InfoAlimento');
+                      Navigator.popAndPushNamed(context, '/signIn');
                     },
                     icon: const Icon(
                       Icons.menu,

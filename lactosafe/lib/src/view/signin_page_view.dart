@@ -5,7 +5,7 @@ import 'package:LactoSafe/src/components/custom_text_field.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
-  static const routeName = '/sigIn';
+  static const routeName = '/signIn';
 
   @override
   State<SignIn> createState() => _SignInState();
