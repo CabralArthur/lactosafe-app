@@ -1,9 +1,11 @@
+import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
-  static const routeName = '/sigIn';
+  static const routeName = '/signIn';
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -22,7 +24,7 @@ class _SignInState extends State<SignIn> {
             flex: 2,
             child: Container(
               color: Colors.white,
-              child: Image.asset('/home/vboxuser/Desktop/Lacsafe/lactosafe-app/lactosafe/lib/src/img/lacsafelogo.png')          
+              child: Image.asset(AppImages.logo)          
             ),
           ),
           Expanded(
@@ -63,9 +65,9 @@ class _SignInState extends State<SignIn> {
                     child: TextButton(onPressed: () {
                       Navigator.pushNamed(context, '/resetPassword');
                     }, 
-                    child: const Text('Esqueceu a senha?', 
+                    child: Text('Esqueceu a senha?', 
                     style: TextStyle(
-                      color: Colors.deepOrangeAccent), 
+                      color: AppColors.orange), 
                       ),
                     ),
                   ),
@@ -77,7 +79,9 @@ class _SignInState extends State<SignIn> {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18))
                       ),
-                      onPressed: () {}, 
+                      onPressed: () {
+                        Navigator.popAndPushNamed(context, '/home');
+                      }, 
                       child: const Text(
                         'Entrar', style: TextStyle(
                           fontSize: 18
@@ -103,7 +107,7 @@ class _SignInState extends State<SignIn> {
                     },
                     child: Container(
                       child: Image.asset(
-                        '/home/vboxuser/Desktop/Lacsafe/lactosafe-app/lactosafe/lib/src/img/google_icon1.png',
+                        AppImages.googleIcon,
                         width: 60,
                         height: 50,
                         fit: BoxFit.contain,
@@ -119,9 +123,9 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(fontSize: 15),
                       ),
                       TextButton(onPressed: (){}, 
-                      child: const Text(
+                      child: Text(
                         'Cadastre-se aqui!', 
-                        style:  TextStyle(fontSize: 15, color: Colors.deepOrange),
+                        style:  TextStyle(fontSize: 15, color: AppColors.orange),
                       )
                       ),
                     ],

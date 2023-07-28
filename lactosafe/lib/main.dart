@@ -1,5 +1,5 @@
 import 'package:LactoSafe/src/view/signin_page_view.dart';
-import 'package:LactoSafe/src/view/camera_view.dart';
+import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:LactoSafe/src/view/home_page.dart';
 import 'package:LactoSafe/src/view/info_food_view.dart';
 import 'package:LactoSafe/src/view/reset_password_view.dart';
@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppSettings.screenWidth = MediaQuery.of(context).size.width;
+    AppSettings.screenHeight = MediaQuery.of(context).size.height;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'LactoSafe',
@@ -31,8 +33,6 @@ class MyApp extends StatelessWidget {
           ResetPassword.routeName: (context) => const ResetPassword(),
           HomePage.routeName: (context) => const HomePage(),
           InfoFoodPage.routeName: (context) => const InfoFoodPage(),
-          CameraPage.routeName: (context) => const CameraPage(),
-
         });
   }
 }
