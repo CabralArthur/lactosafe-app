@@ -1,4 +1,5 @@
 class AppImages {
-  static String logo = '';
-  static String cremeDeLeite = "assets/images/CremeDeLeite.png";
+  static String logo = "assets/images/lactosafelogo.png";
+  static String googleIcon = "assets/images/google_icon1.png";
+
 }
