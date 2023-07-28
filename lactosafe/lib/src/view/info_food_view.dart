@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:LactoSafe/src/controller/info_food_controller.dart';
 import 'package:LactoSafe/src/model/info_food_model.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class InfoFoodPage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
             Navigator.popAndPushNamed(context, '/home');
           },
           icon: Icon(Icons.arrow_back_rounded),
-          color: const Color(0xC1ED5500),
+          color: AppColors.orange,
           iconSize: 40.0,
           alignment: Alignment.topLeft,
         ),
@@ -68,8 +69,8 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
                 food.getFoodName,
                 //'Creme de leite sem lactose',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0xC11E1E1E),
+                style: TextStyle(
+                  color: AppColors.grey,
                   fontSize: 36,
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w900,
@@ -80,23 +81,30 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
             Stack(
               alignment: Alignment.center,
               children: 
-              <Widget>[Container(width: 284, height: 267.67, child: ClipPath(
+              <Widget>[
+                Container(width: 284, height: 267.67, child: ClipPath(
                 clipper: const ShapeBorderClipper(shape: CircleBorder()),
                 clipBehavior: Clip.hardEdge,
                 child: foodImage != null
                 ? Image.file(File(foodImage.path),
                     width: 284, height: 267.67, fit: BoxFit.fitWidth)
-                : Image.asset("assets/images/CremeDeLeite.png"),
+                : const Text("Erro ao exibir imagem"),
             ),), 
-              
+
             Stack(
               alignment: Alignment.topRight, 
-              children: <Widget>[ Column(children: [Align(alignment: Alignment.centerRight, child: FloatingActionButton(backgroundColor: Color(0xFFF08648), onPressed: () {}, child: Icon(Icons.favorite),),),
+              children: <Widget>[ Column(children: [Align(alignment: Alignment.centerRight, child: FloatingActionButton(backgroundColor: AppColors.orange, onPressed: () {}, child: Icon(Icons.favorite),),),
               const SizedBox(height: 10.0,),
-              Align(alignment: Alignment.bottomRight, child: FloatingActionButton(backgroundColor: Color(0xFFF08648), onPressed: () {}, child: Icon(Icons.question_mark_sharp),),)],) 
-              ],)
+              Align(alignment: Alignment.bottomRight, child: FloatingActionButton(backgroundColor: AppColors.orange, onPressed: () {}, child: Icon(Icons.question_mark_sharp),),)],) 
+              ],
+              ) 
             
             ]),
+            // Container(
+            //   color: AppColors.orange, 
+            //   height: AppSettings.screenHeight/10, 
+            //   child: const Text("Teste"),
+            //   ),
           
       // TESTE
             // Container(

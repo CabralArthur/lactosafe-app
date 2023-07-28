@@ -1,7 +1,6 @@
-import 'package:LactoSafe/src/model/info_food_model.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/view/home_page_view.dart';
 import 'package:LactoSafe/src/view/map_page_view.dart';
-import 'package:cross_file/src/types/interface.dart';
 import 'package:flutter/material.dart';
 
 import '../controller/camera_controller.dart';
@@ -61,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                 takePicture(context);
                 
               },
-              backgroundColor: const Color(0xFFF08648),
+              backgroundColor: AppColors.orange,
               child: const Icon(
                 Icons.camera_alt_outlined,
                 size: 50.0,
@@ -80,8 +79,8 @@ class _HomePageState extends State<HomePage> {
       child: BottomNavigationBar(
         iconSize: 30.0,
         backgroundColor: Colors.white,
-        unselectedItemColor: const Color(0x991E1E1E),
-        selectedItemColor: const Color(0xC1ED5500),
+        unselectedItemColor: AppColors.grey,
+        selectedItemColor: AppColors.orange,
         currentIndex: _indiceAtual,
         onTap: onTabTapped,
         items: const [
