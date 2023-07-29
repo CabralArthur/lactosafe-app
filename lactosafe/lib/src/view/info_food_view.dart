@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:LactoSafe/src/controller/info_food_controller.dart';
 import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:flutter/material.dart';
 
 class InfoFoodPage extends StatefulWidget {
@@ -82,29 +83,35 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
               alignment: Alignment.center,
               children: 
               <Widget>[
-                Container(width: 284, height: 267.67, child: ClipPath(
+                SizedBox(width: AppSettings.screenWidth, height: AppSettings.screenHeight/3, child: ClipPath(
                 clipper: const ShapeBorderClipper(shape: CircleBorder()),
                 clipBehavior: Clip.hardEdge,
                 child: foodImage != null
                 ? Image.file(File(foodImage.path),
-                    width: 284, height: 267.67, fit: BoxFit.fitWidth)
+                    width: 284, height: 267.67, fit: BoxFit.cover)
                 : const Text("Erro ao exibir imagem"),
             ),), 
 
             Stack(
               alignment: Alignment.topRight, 
-              children: <Widget>[ Column(children: [Align(alignment: Alignment.centerRight, child: FloatingActionButton(backgroundColor: AppColors.orange, onPressed: () {}, child: Icon(Icons.favorite),),),
-              const SizedBox(height: 10.0,),
-              Align(alignment: Alignment.bottomRight, child: FloatingActionButton(backgroundColor: AppColors.orange, onPressed: () {}, child: Icon(Icons.question_mark_sharp),),)],) 
+              children: <Widget>[ 
+                Column(children: [
+                  Align(
+                    alignment: Alignment.centerRight, 
+                    child: FloatingActionButton(
+                      backgroundColor: AppColors.orange, 
+                      onPressed: () {}, 
+                      child: Icon(Icons.favorite),
+                      ),
+                    ),
+                    const SizedBox(height: 10.0,),
+                    Align(alignment: Alignment.bottomRight, child: FloatingActionButton(backgroundColor: AppColors.orange, onPressed: () {}, child: Icon(Icons.question_mark_sharp),),)],) 
               ],
               ) 
             
             ]),
-            // Container(
-            //   color: AppColors.orange, 
-            //   height: AppSettings.screenHeight/10, 
-            //   child: const Text("Teste"),
-            //   ),
+            SizedBox(height: AppSettings.screenHeight/30,),
+            Text("${food.getChanceLactose} de ser ${food.getFoodName}", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w200),),
           
       // TESTE
             // Container(
