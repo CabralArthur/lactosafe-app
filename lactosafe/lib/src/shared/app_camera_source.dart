@@ -1,0 +1,4 @@
+enum CameraSouce {
+  gallery,
+  camera
+}
