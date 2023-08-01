@@ -1,7 +1,12 @@
+import 'package:LactoSafe/src/components/photo_widget.dart';
+import 'package:LactoSafe/src/shared/app_camera_source.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/shared/app_images.dart';
+import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:LactoSafe/src/view/home_page_view.dart';
 import 'package:LactoSafe/src/view/map_page_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../controller/camera_controller.dart';
 
@@ -29,24 +34,24 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          toolbarHeight: AppSettings.screenHeight/12,
+          // backgroundColor: AppColors.orange,
+          leading: PhotoWidget(picture: null, height: 4, width: 4),
           actions: [
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.popAndPushNamed(context, '/signIn');
-                    },
-                    icon: const Icon(
-                      Icons.menu,
-                      size: 40.0,
-                    ),
-                    color: Colors.orange,
-                  ),
-                )
-              ],
-            )
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: 
+                InkWell(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, '/settings');
+                  },
+                  child: 
+                    SvgPicture.asset(AppImages.menuIcon, height: AppSettings.screenHeight/15,),
+                  
+                ),
+              
+            ),
+          
           ],
         ),
         body: _pages.elementAt(_indiceAtual),
@@ -57,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             child: FittedBox(
                 child: FloatingActionButton.large(
               onPressed: () {
-                takePicture(context);
+                takePicture(context, CameraSouce.gallery, true);
                 
               },
               backgroundColor: AppColors.orange,
