@@ -62,13 +62,11 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // Food Name
             SizedBox(
               width: 262,
               height: 100,
               child: Text(
                 food.getFoodName,
-                //'Creme de leite sem lactose',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: AppColors.grey,
@@ -111,7 +109,7 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
             
             ]),
             SizedBox(height: AppSettings.screenHeight/30,),
-            Text("${food.getChanceLactose} de ser ${food.getFoodName}", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w200),),
+            Text("${food.getChanceLactose} chanche de ser ${food.getFoodName}", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w200),),
           
       // TESTE
             // Container(

@@ -1,3 +1,4 @@
+import 'package:LactoSafe/src/view/settings.page.dart';
 import 'package:LactoSafe/src/view/signin_page_view.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:LactoSafe/src/view/home_page.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           ResetPassword.routeName: (context) => const ResetPassword(),
           HomePage.routeName: (context) => const HomePage(),
           InfoFoodPage.routeName: (context) => const InfoFoodPage(),
+          SettingsPage.routeName: (context) => const SettingsPage(),
         });
   }
 }
