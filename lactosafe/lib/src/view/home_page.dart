@@ -1,7 +1,15 @@
+import 'package:LactoSafe/src/components/photo_widget.dart';
+import 'package:LactoSafe/src/shared/app_camera_source.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/shared/app_images.dart';
+import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:LactoSafe/src/view/home_page_view.dart';
 import 'package:LactoSafe/src/view/map_page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../controller/camera_controller.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,21 +23,8 @@ class _HomePageState extends State<HomePage> {
   static const List _pages = [HomePageBody(), MapPage()];
   int _indiceAtual = 0;
 
-  XFile? image;
-  XFile? imageTemporary;
-
-  void takePicture() async {
-    imageTemporary = await ImagePicker().pickImage(source: ImageSource.camera);
-    //if (image == null) return;
-
-    setState(() {
-      image = imageTemporary;
-    });
-  }
-
   void onTabTapped(int index) {
     setState(() {
-      print(index);
       _indiceAtual = index;
     });
   }
@@ -39,22 +34,24 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          toolbarHeight: AppSettings.screenHeight/12,
+          // backgroundColor: AppColors.orange,
+          leading: PhotoWidget(picture: null, height: 4, width: 4),
           actions: [
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.menu,
-                      size: 40.0,
-                    ),
-                    color: Colors.orange,
-                  ),
-                )
-              ],
-            )
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: 
+                InkWell(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, '/settings');
+                  },
+                  child: 
+                    SvgPicture.asset(AppImages.menuIcon, height: AppSettings.screenHeight/15,),
+                  
+                ),
+              
+            ),
+          
           ],
         ),
         body: _pages.elementAt(_indiceAtual),
@@ -65,9 +62,10 @@ class _HomePageState extends State<HomePage> {
             child: FittedBox(
                 child: FloatingActionButton.large(
               onPressed: () {
-                takePicture();
+                takePicture(context, CameraSouce.gallery, true);
+                
               },
-              backgroundColor: const Color(0xFFF08648),
+              backgroundColor: AppColors.orange,
               child: const Icon(
                 Icons.camera_alt_outlined,
                 size: 50.0,
@@ -86,8 +84,8 @@ class _HomePageState extends State<HomePage> {
       child: BottomNavigationBar(
         iconSize: 30.0,
         backgroundColor: Colors.white,
-        unselectedItemColor: const Color(0x991E1E1E),
-        selectedItemColor: const Color(0xC1ED5500),
+        unselectedItemColor: AppColors.grey,
+        selectedItemColor: AppColors.orange,
         currentIndex: _indiceAtual,
         onTap: onTabTapped,
         items: const [

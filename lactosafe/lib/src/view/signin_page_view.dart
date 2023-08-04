@@ -1,19 +1,17 @@
-import 'package:LactoSafe/src/controller/singin_page_controller.dart';
-import 'package:LactoSafe/src/view/begining_page.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
-import 'package:LactoSafe/src/controller/textfield_controller.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
-  static const routeName = '/home';
+  static const routeName = '/signIn';
 
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
-  final TextFieldController textFieldController = TextFieldController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class _SignInState extends State<SignIn> {
             flex: 2,
             child: Container(
               color: Colors.white,
-              child: Image.asset('/home/vboxuser/Desktop/Lacsafe/lactosafe-app/lactosafe/lib/src/img/lacsafelogo.png')          
+              child: Image.asset(AppImages.logo)          
             ),
           ),
           Expanded(
@@ -51,25 +49,25 @@ class _SignInState extends State<SignIn> {
                 children: [
                   
                   //Email
-                   CustomTextField(
+                  const CustomTextField(
                     icon: Icons.email,
                     label: 'Email',
-                    controller: textFieldController.emailController
                   ),
                   //Senha
-                   CustomTextField(
+                  const CustomTextField(
                     icon: Icons.lock,
                     label: 'Senha',
                     isObscure: true,
-                    controller: textFieldController.passwordController
                   ),
                   //Esqueceu a senha
                   Align(
                     alignment: Alignment.centerRight,
-                    child: TextButton(onPressed: () {}, 
-                    child: const Text('Esqueceu a senha?', 
+                    child: TextButton(onPressed: () {
+                      Navigator.pushNamed(context, '/resetPassword');
+                    }, 
+                    child: Text('Esqueceu a senha?', 
                     style: TextStyle(
-                      color: Colors.deepOrangeAccent), 
+                      color: AppColors.orange), 
                       ),
                     ),
                   ),
@@ -82,9 +80,7 @@ class _SignInState extends State<SignIn> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18))
                       ),
                       onPressed: () {
-                        String email = textFieldController.getEmailFromTextField();
-                        String password = textFieldController.getPasswordFromTextField();
-                        login(email, password);
+                        Navigator.popAndPushNamed(context, '/home');
                       }, 
                       child: const Text(
                         'Entrar', style: TextStyle(
@@ -108,11 +104,10 @@ class _SignInState extends State<SignIn> {
                   InkWell(
                     onTap: (){
                       //Vai pro login com google
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => BeginingPage(),));
                     },
                     child: Container(
                       child: Image.asset(
-                        '/home/vboxuser/Desktop/Lacsafe/lactosafe-app/lactosafe/lib/src/img/google_icon1.png',
+                        AppImages.googleIcon,
                         width: 60,
                         height: 50,
                         fit: BoxFit.contain,
@@ -128,9 +123,9 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(fontSize: 15),
                       ),
                       TextButton(onPressed: (){}, 
-                      child: const Text(
+                      child: Text(
                         'Cadastre-se aqui!', 
-                        style:  TextStyle(fontSize: 15, color: Colors.deepOrange),
+                        style:  TextStyle(fontSize: 15, color: AppColors.orange),
                       )
                       ),
                     ],
