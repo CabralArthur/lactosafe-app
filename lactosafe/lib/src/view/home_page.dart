@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _pages.elementAt(_indiceAtual),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: SizedBox(
+        floatingActionButton: Container(
             width: 85.0,
             height: 85.0,
             child: FittedBox(

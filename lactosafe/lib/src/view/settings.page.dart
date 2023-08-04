@@ -34,7 +34,7 @@ class _SettingsPageState extends State<SettingsPage> {
             iconSize: 40.0,
            alignment: Alignment.topLeft,),
            actions: [
-            PhotoWidget(picture: AppImages.logo2)
+            PhotoWidget(picture: AppImages.logoLetterless)
            ],
            ), 
 
