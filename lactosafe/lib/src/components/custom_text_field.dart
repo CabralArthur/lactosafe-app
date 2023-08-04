@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final IconData icon;
   final String label;
+  final double iconSize;
   final bool isObscure;
   final String? Function(String?)? validator;
 
 
 
-  const CustomTextField({super.key, required this.icon, required this.label,  this.isObscure = false, this.validator});
+  const CustomTextField({super.key, required this.icon, this.iconSize=20, required this.label,  this.isObscure = false, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CustomTextField extends StatelessWidget {
                       validator: validator,
                       obscureText: isObscure,
                       decoration: InputDecoration(
-                        prefixIcon:  Icon(icon),
+                        prefixIcon:  Icon(icon, size: iconSize,),
                         labelText: label,
                         isDense: true,
                         border: OutlineInputBorder(
