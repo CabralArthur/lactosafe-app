@@ -6,7 +6,6 @@ import 'package:LactoSafe/src/view/info_food_view.dart';
 import 'package:LactoSafe/src/view/reset_password_view.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }

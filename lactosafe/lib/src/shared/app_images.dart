@@ -5,6 +5,6 @@ class AppImages {
   static String cremeDeLeite = "assets/images/CremeDeLeite.png";
   static String userPicture = "assets/images/userPhoto.png";
   static String userDefault = "assets/images/UserProfile.png";
-  static String logo2 = "assets/images/lactosafe_logo.png";
+  static String logoLetterless = "assets/images/lactosafe_logo_letterless.png";
 
 }
