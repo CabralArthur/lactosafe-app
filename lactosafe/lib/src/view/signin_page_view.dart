@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
 
 class SignIn extends StatefulWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   const SignIn({super.key});
   static const routeName = '/signIn';
 
