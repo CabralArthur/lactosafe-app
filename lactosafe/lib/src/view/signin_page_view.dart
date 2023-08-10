@@ -42,12 +42,14 @@ class _SignInState extends State<SignIn> {
                       const CustomTextField(
                         icon: Icons.email,
                         label: 'Email',
+                        controller:emailController,
                       ),
                       //Senha
                       const CustomTextField(
                         icon: Icons.lock,
                         label: 'Senha',
                         isObscure: true,
+                        controller:passwordController,
                       ),
                       //Esqueceu a senha
                       Align(
