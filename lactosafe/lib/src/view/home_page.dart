@@ -10,7 +10,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../controller/camera_controller.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
   static const routeName = '/home';
@@ -34,36 +33,33 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          toolbarHeight: AppSettings.screenHeight/12,
+          toolbarHeight: AppSettings.screenHeight / 12,
           // backgroundColor: AppColors.orange,
           leading: PhotoWidget(picture: null, height: 4, width: 4),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 15.0),
-              child: 
-                InkWell(
-                  onTap: () {
-                    Navigator.popAndPushNamed(context, '/settings');
-                  },
-                  child: 
-                    SvgPicture.asset(AppImages.menuIcon, height: AppSettings.screenHeight/15,),
-                  
+              child: InkWell(
+                onTap: () {
+                  Navigator.popAndPushNamed(context, '/settings');
+                },
+                child: SvgPicture.asset(
+                  AppImages.menuIcon,
+                  height: AppSettings.screenHeight / 15,
                 ),
-              
+              ),
             ),
-          
           ],
         ),
         body: _pages.elementAt(_indiceAtual),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
+        floatingActionButton: SizedBox(
             width: 85.0,
             height: 85.0,
             child: FittedBox(
                 child: FloatingActionButton.large(
               onPressed: () {
                 takePicture(context, CameraSouce.gallery, true);
-                
               },
               backgroundColor: AppColors.orange,
               child: const Icon(

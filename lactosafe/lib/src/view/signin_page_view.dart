@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
 
 class SignIn extends StatefulWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   const SignIn({super.key});
   static const routeName = '/signIn';
 
@@ -12,132 +14,127 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-
-      body: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              color: Colors.white,
-              child: Image.asset(AppImages.logo)          
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                  color: Colors.white, child: Image.asset(AppImages.logo)),
             ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 50,
-
-              ),
-              
-              decoration: const BoxDecoration(
-
-                color: Colors.white,
-
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(45)
-                )
-              ),
-              child:  Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  
-                  //Email
-                  const CustomTextField(
-                    icon: Icons.email,
-                    label: 'Email',
-                  ),
-                  //Senha
-                  const CustomTextField(
-                    icon: Icons.lock,
-                    label: 'Senha',
-                    isObscure: true,
-                  ),
-                  //Esqueceu a senha
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(onPressed: () {
-                      Navigator.pushNamed(context, '/resetPassword');
-                    }, 
-                    child: Text('Esqueceu a senha?', 
-                    style: TextStyle(
-                      color: AppColors.orange), 
-                      ),
-                    ),
-                  ),
-
-                  //Entrar
-                  SizedBox(
-                    height: 50,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18))
-                      ),
-                      onPressed: () {
-                        Navigator.popAndPushNamed(context, '/home');
-                      }, 
-                      child: const Text(
-                        'Entrar', style: TextStyle(
-                          fontSize: 18
-                        ),),
-                      
-                      ),                      
-                  ),
-                  
-                  const Padding (
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    child: Text(
-                      'ou',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold, 
-                      ),
-                    ),
-                  ),
-                  // GoogleButton
-                  InkWell(
-                    onTap: (){
-                      //Vai pro login com google
-                    },
-                    child: Container(
-                      child: Image.asset(
-                        AppImages.googleIcon,
-                        width: 60,
-                        height: 50,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  ///CadastroButton
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            Expanded(
+              flex: 3,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 50,
+                ),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(45))),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Não possui uma conta?', 
-                        style: TextStyle(fontSize: 15),
+                      //Email
+                      const CustomTextField(
+                        icon: Icons.email,
+                        label: 'Email',
+                        controller:emailController,
                       ),
-                      TextButton(onPressed: (){}, 
-                      child: Text(
-                        'Cadastre-se aqui!', 
-                        style:  TextStyle(fontSize: 15, color: AppColors.orange),
+                      //Senha
+                      const CustomTextField(
+                        icon: Icons.lock,
+                        label: 'Senha',
+                        isObscure: true,
+                        controller:passwordController,
+                      ),
+                      //Esqueceu a senha
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/resetPassword');
+                          },
+                          child: Text(
+                            'Esqueceu a senha?',
+                            style: TextStyle(color: AppColors.orange),
+                          ),
+                        ),
+                      ),
+
+                      //Entrar
+                      SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18))),
+                          onPressed: () {
+                            String email = emailController.text;
+                            String password = passwordController.text;
+                            login(email,password)
+                            Navigator.popAndPushNamed(context, '/home');
+                          },
+                          child: const Text(
+                            'Entrar',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ),
+
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          'ou',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      // GoogleButton
+                      InkWell(
+                        onTap: () {
+                          //Vai pro login com google
+                        },
+                        child: Container(
+                          child: Image.asset(
+                            AppImages.googleIcon,
+                            width: 60,
+                            height: 50,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+
+                      ///CadastroButton
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Não possui uma conta?',
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Cadastre-se aqui!',
+                                style: TextStyle(
+                                    fontSize: 15, color: AppColors.orange),
+                              )),
+                        ],
                       )
-                      ),
                     ],
-                  )
-
-                ],
+                  ),
+                ),
               ),
-            ),
-          )
-        ],
-      ) 
-
-    );
+            )
+          ],
+        ));
   }
 }

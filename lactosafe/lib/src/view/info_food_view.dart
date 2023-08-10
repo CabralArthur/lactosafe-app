@@ -14,20 +14,17 @@ class InfoFoodPage extends StatefulWidget {
 }
 
 class _InfoFoodPageState extends State<InfoFoodPage> {
-
-  
   late Future _dataFoodInformation;
   late final File? _foodImage = Foods[0].getImage;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _dataFoodInformation = setFoodInformation(_foodImage);
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -45,7 +42,6 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return const Center(child: CircularProgressIndicator());
-            
           } else {
             return buildFoodInformation(food: Foods[0]);
           }
@@ -75,43 +71,59 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
                   fontWeight: FontWeight.w900,
                 ),
               ),
-            ), 
-            
-            Stack(
-              alignment: Alignment.center,
-              children: 
-              <Widget>[
-                SizedBox(width: AppSettings.screenWidth, height: AppSettings.screenHeight/3, child: ClipPath(
-                clipper: const ShapeBorderClipper(shape: CircleBorder()),
-                clipBehavior: Clip.hardEdge,
-                child: foodImage != null
-                ? Image.file(File(foodImage.path),
-                    width: 284, height: 267.67, fit: BoxFit.cover)
-                : const Text("Erro ao exibir imagem"),
-            ),), 
+            ),
 
-            Stack(
-              alignment: Alignment.topRight, 
-              children: <Widget>[ 
-                Column(children: [
-                  Align(
-                    alignment: Alignment.centerRight, 
-                    child: FloatingActionButton(
-                      backgroundColor: AppColors.orange, 
-                      onPressed: () {}, 
-                      child: Icon(Icons.favorite),
+            Stack(alignment: Alignment.center, children: <Widget>[
+              SizedBox(
+                width: AppSettings.screenWidth,
+                height: AppSettings.screenHeight / 3,
+                child: ClipPath(
+                  clipper: const ShapeBorderClipper(shape: CircleBorder()),
+                  clipBehavior: Clip.hardEdge,
+                  child: foodImage != null
+                      ? Image.file(File(foodImage.path),
+                          width: 284, height: 267.67, fit: BoxFit.cover)
+                      : const Text("Erro ao exibir imagem"),
+                ),
+              ),
+              Stack(
+                alignment: Alignment.topRight,
+                children: <Widget>[
+                  Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: FloatingActionButton(
+                          backgroundColor: AppColors.orange,
+                          onPressed: () {},
+                          child: Icon(Icons.favorite),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10.0,),
-                    Align(alignment: Alignment.bottomRight, child: FloatingActionButton(backgroundColor: AppColors.orange, onPressed: () {}, child: Icon(Icons.question_mark_sharp),),)],) 
-              ],
-              ) 
-            
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: FloatingActionButton(
+                          backgroundColor: AppColors.orange,
+                          onPressed: () {},
+                          child: Icon(Icons.question_mark_sharp),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              )
             ]),
-            SizedBox(height: AppSettings.screenHeight/30,),
-            Text("${food.getChanceLactose} chanche de ser ${food.getFoodName}", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w200),),
-          
-      // TESTE
+            SizedBox(
+              height: AppSettings.screenHeight / 30,
+            ),
+            Text(
+              "${food.getChanceLactose} chanche de ser ${food.getFoodName}",
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w200),
+            ),
+
+            // TESTE
             // Container(
             //   width: 390,
             //   height: 844,

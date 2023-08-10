@@ -22,14 +22,12 @@ class MyApp extends StatelessWidget {
         title: 'LactoSafe',
         theme: ThemeData(
           primarySwatch: Colors.deepOrange,
-          
           appBarTheme: const AppBarTheme(
               elevation: 0, backgroundColor: Color(0xFFF8F8F8)),
         ),
         initialRoute: SignIn.routeName,
         routes: {
-          
-          SignIn.routeName:(context) => const SignIn(),
+          SignIn.routeName: (context) => const SignIn(),
           ResetPassword.routeName: (context) => const ResetPassword(),
           HomePage.routeName: (context) => const HomePage(),
           InfoFoodPage.routeName: (context) => const InfoFoodPage(),
