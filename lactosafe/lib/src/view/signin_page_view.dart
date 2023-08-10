@@ -73,6 +73,9 @@ class _SignInState extends State<SignIn> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
                           onPressed: () {
+                            String email = emailController.text;
+                            String password = passwordController.text;
+                            login(email,password)
                             Navigator.popAndPushNamed(context, '/home');
                           },
                           child: const Text(
