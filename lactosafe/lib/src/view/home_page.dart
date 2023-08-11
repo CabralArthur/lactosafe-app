@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           toolbarHeight: AppSettings.screenHeight/12,
-          // backgroundColor: AppColors.orange,
           leading: PhotoWidget(picture: null, height: 4, width: 4),
           actions: [
             Padding(
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _pages.elementAt(_indiceAtual),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
+        floatingActionButton: SizedBox(
             width: 85.0,
             height: 85.0,
             child: FittedBox(
@@ -66,10 +65,7 @@ class _HomePageState extends State<HomePage> {
                 
               },
               backgroundColor: AppColors.orange,
-              child: const Icon(
-                Icons.camera_alt_outlined,
-                size: 50.0,
-              ),
+              child: Image.asset(AppImages.cameraIcon)
             ))),
         bottomNavigationBar: SizedBox(
           height: 90,
@@ -88,16 +84,16 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: AppColors.orange,
         currentIndex: _indiceAtual,
         onTap: onTabTapped,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-              ),
+              icon: 
+              Image.asset(AppImages.homeIcon),
+
               label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.map_outlined,
-              ),
+              icon: 
+              Image.asset(AppImages.mapIcon),
+
               label: 'Mapa')
         ],
       ),
