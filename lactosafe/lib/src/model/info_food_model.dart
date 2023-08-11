@@ -3,14 +3,14 @@ import 'dart:io';
 class InfoFood {
   String _nome;
   String _helpText;
-  String _chanceLactose;
+  double _chanceLactose;
   File? _image;
 
   InfoFood(this._nome, this._helpText, this._chanceLactose, this._image);
 
   String get getFoodName => _nome;
   String get getHelpText => _helpText;
-  String get getChanceLactose => _chanceLactose;
+  double get getChanceLactose => _chanceLactose;
   File? get getImage => _image;
 
   void setImage(File? image) {
@@ -24,7 +24,7 @@ class InfoFood {
   void setHelpText(String helpText) {
     _helpText = helpText;
   }
-  void setChanceLactose(String chanceLactose) {
+  void setChanceLactose(double chanceLactose) {
     _chanceLactose = chanceLactose;
   }
 
