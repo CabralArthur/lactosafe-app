@@ -37,7 +37,7 @@ void takePicture(BuildContext context, CameraSouce sourceType, bool isFood) asyn
 
 void settingFoodImage(BuildContext context) {
    if(Foods.isEmpty) {
-          InfoFood foodAnalyzed = InfoFood('', '', '', File(image!.path));
+          InfoFood foodAnalyzed = InfoFood('', '', 0, File(image!.path));
           Foods.add(foodAnalyzed);
     } else {
       Foods[0].setImage(File(image!.path));
