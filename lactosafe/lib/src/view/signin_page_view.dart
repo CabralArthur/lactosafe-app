@@ -1,11 +1,11 @@
+import 'package:LactoSafe/src/controller/textfield_controller.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
+import 'package:LactoSafe/src/controller/singin_page_controller.dart';
 
 class SignIn extends StatefulWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
   const SignIn({super.key});
   static const routeName = '/signIn';
 
@@ -14,6 +14,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final TextFieldController textFieldController = TextFieldController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +43,18 @@ class _SignInState extends State<SignIn> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //Email
-                      const CustomTextField(
+                      CustomTextField(
                         icon: Icons.email,
                         label: 'Email',
-                        controller:emailController,
+                        isObscure: false,
+                        controller: textFieldController.emailController,
                       ),
                       //Senha
-                      const CustomTextField(
+                      CustomTextField(
                         icon: Icons.lock,
                         label: 'Senha',
                         isObscure: true,
-                        controller:passwordController,
+                        controller: textFieldController.passwordController,
                       ),
                       //Esqueceu a senha
                       Align(
@@ -75,9 +78,11 @@ class _SignInState extends State<SignIn> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
                           onPressed: () {
-                            String email = emailController.text;
-                            String password = passwordController.text;
-                            login(email,password)
+                            String email =
+                                textFieldController.getEmailFromTextField();
+                            String password =
+                                textFieldController.getPasswordFromTextField();
+                            login(email, password);
                             Navigator.popAndPushNamed(context, '/home');
                           },
                           child: const Text(
@@ -102,13 +107,11 @@ class _SignInState extends State<SignIn> {
                         onTap: () {
                           //Vai pro login com google
                         },
-                        child: Container(
-                          child: Image.asset(
-                            AppImages.googleIcon,
-                            width: 60,
-                            height: 50,
-                            fit: BoxFit.contain,
-                          ),
+                        child: Image.asset(
+                          AppImages.googleIcon,
+                          width: 60,
+                          height: 50,
+                          fit: BoxFit.contain,
                         ),
                       ),
 
