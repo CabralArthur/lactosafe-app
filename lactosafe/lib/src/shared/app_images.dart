@@ -6,5 +6,5 @@ class AppImages {
   static String userPicture = "assets/images/userPhoto.png";
   static String userDefault = "assets/images/UserProfile.png";
   static String logoLetterless = "assets/images/lactosafe_logo_letterless.png";
-
+  static String missing_symbol = "assets/images/missing_symbol.png";
 }
