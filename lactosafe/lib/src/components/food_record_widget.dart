@@ -1,6 +1,7 @@
 import 'package:LactoSafe/src/components/photo_widget.dart';
 import 'package:LactoSafe/src/controller/card_food_risc_widget_controller.dart';
 import 'package:LactoSafe/src/model/info_food_model.dart';
+import 'package:LactoSafe/src/repositories/food_recognation_repository.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 import '../shared/app_colors.dart';
 
 class FoodRecord extends StatefulWidget {
-  final InfoFood food;
+  final FoodModel food;
   const FoodRecord({super.key, required this.food});
 
   @override
@@ -18,7 +19,7 @@ class FoodRecord extends StatefulWidget {
 class _FoodRecordState extends State<FoodRecord> {
   @override
   Widget build(BuildContext context) {
-    if (Foods.isEmpty) {
+    if (FoodRecognizedRepository.repository.isEmpty) { //Adicionei isso para teste, mas acredito que nao deva ser acessado assim
       return Stack(
         children: [
           Container(
@@ -123,7 +124,7 @@ Widget buildFilter(String filterName) => Container(
           )),
     );
 
-Widget buildFoodCard({required InfoFood food}) => Container(
+Widget buildFoodCard({required FoodModel food}) => Container(
     alignment: Alignment.topCenter,
     margin: const EdgeInsets.all(12),
     width: AppSettings.screenWidth / 2 + 40,
