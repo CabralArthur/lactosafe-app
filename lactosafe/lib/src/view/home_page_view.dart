@@ -13,7 +13,7 @@ class HomePageBody extends StatefulWidget {
 }
 
 class _HomePageBodyState extends State<HomePageBody> {
-  InfoFood foodTest = InfoFood("Creme de Leite", "_helpText", 0, null);
+  FoodModel foodTest = FoodModel(nome: "Creme de Leite", helpText: "_helpText", chanceLactose: 0, image: null);
 
   @override
   Widget build(BuildContext Context) {
