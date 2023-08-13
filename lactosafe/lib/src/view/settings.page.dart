@@ -46,7 +46,6 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 10,),
 
               TextButton(onPressed: () {
-                takePicture(context, CameraSouce.gallery, false);
                 setState(() {
                   
                 });
