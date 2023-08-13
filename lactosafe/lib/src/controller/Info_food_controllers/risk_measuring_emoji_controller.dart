@@ -4,16 +4,17 @@ String riskMeasuringEmoji({required double foodRisk}) {
   switch (foodRisk) {
     case 0:
       return AppImages.smileEmoji;
-    case > 0 && <= 40:
-      return AppImages.doubtEmoji;
-    case > 40 && <= 60:
+    case > 0 && < 50:
       return AppImages.medianEmoji;
-
-    case > 60 && < 100:
-      return AppImages.surprisedEmoji;
-    case 100:
-      return AppImages.sadEmoji;
-    default:
+    case >= 50 && <= 70:
       return AppImages.doubtEmoji;
+
+    case > 70 && <= 90:
+      return AppImages.surprisedEmoji;
+    case > 90 && <= 100:
+      return AppImages.sadEmoji;
+
+    default:
+      return AppImages.doubtIcon;
   }
 }

@@ -13,7 +13,9 @@ class AppImages {
   static String sadEmoji = "assets/images/SadEmoji.svg";
   static String welcome = "assets/images/Welcome.png";
   static String cameraIcon = "assets/images/cameraIcon.png";
+  static String galleryIcon= "assets/images/GalleryIcon.png";
   static String homeIcon = "assets/images/homeIcon.png";
   static String mapIcon = "assets/images/mapIcon.png";
+  static String doubtIcon = "assets/images/doubtIcon.svg";
 
 }

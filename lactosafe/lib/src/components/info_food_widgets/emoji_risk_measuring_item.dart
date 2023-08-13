@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 Widget emojiRiskMeasuringItem({required double risk}) {
  //double risk = double.parse(food.getChanceLactose);
  
-  if (risk >= 80) {
+  if (risk <= 70) {
     return Positioned(
         top: -40,
         left: AppSettings.screenWidth / itemsRiskMeasuringPosition(foodRisk: risk) - 12,
