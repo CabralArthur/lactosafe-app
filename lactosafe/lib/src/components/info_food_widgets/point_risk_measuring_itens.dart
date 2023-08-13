@@ -7,7 +7,7 @@ import '../../shared/app_colors.dart';
 
 Widget pointRiskMeasuringItem({required double risk}) {
   //double risk = double.parse(food.getChanceLactose);
-  if (risk >= 80) {
+  if (risk <= 70) {
     return Positioned(
       left: AppSettings.screenWidth / itemsRiskMeasuringPosition(foodRisk: risk),
       child: Container(
