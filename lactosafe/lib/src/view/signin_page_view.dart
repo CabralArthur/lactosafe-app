@@ -82,8 +82,11 @@ class _SignInState extends State<SignIn> {
                                 textFieldController.getEmailFromTextField();
                             String password =
                                 textFieldController.getPasswordFromTextField();
-                            login(email, password);
-                            Navigator.popAndPushNamed(context, '/home');
+                            var valueFromLogin = login(email, password);
+                            // ignore: unrelated_type_equality_checks
+                            if (valueFromLogin == true) {
+                              Navigator.popAndPushNamed(context, "/home");
+                            }
                           },
                           child: const Text(
                             'Entrar',

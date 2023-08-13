@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(
               elevation: 0, backgroundColor: Color(0xFFF8F8F8)),
         ),
-        initialRoute: Missing_Food.routeName,
+        initialRoute: SignIn.routeName,
         routes: {
           SignIn.routeName: (context) => const SignIn(),
           ResetPassword.routeName: (context) => const ResetPassword(),
