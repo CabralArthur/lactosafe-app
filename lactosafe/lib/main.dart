@@ -1,3 +1,6 @@
+import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/view/camera_view.dart';
+import 'package:LactoSafe/src/view/food_list_view.dart';
 import 'package:LactoSafe/src/view/settings.page.dart';
 import 'package:LactoSafe/src/view/signin_page_view.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
@@ -23,8 +26,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.deepOrange,
           
-          appBarTheme: const AppBarTheme(
-              elevation: 0, backgroundColor: Color(0xFFF8F8F8)),
+          appBarTheme: AppBarTheme(
+              elevation: 0, backgroundColor: AppColors.backgroundColor),
         ),
         initialRoute: SignIn.routeName,
         routes: {
@@ -34,6 +37,8 @@ class MyApp extends StatelessWidget {
           HomePage.routeName: (context) => const HomePage(),
           InfoFoodPage.routeName: (context) => const InfoFoodPage(),
           SettingsPage.routeName: (context) => const SettingsPage(),
+          FoodListView.routeName: (context) => const FoodListView(),
+          CameraView.routeName: (context) => const CameraView(),
         });
   }
 }
