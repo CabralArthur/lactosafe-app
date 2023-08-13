@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             child: FittedBox(
                 child: FloatingActionButton.large(
               onPressed: () {
-                takePicture(context, CameraSouce.gallery, true);
+                Navigator.pushNamed(context, '/camera');
                 
               },
               backgroundColor: AppColors.orange,
