@@ -24,13 +24,10 @@ class InfoFood {
   void setHelpText(String helpText) {
     _helpText = helpText;
   }
+
   void setChanceLactose(String chanceLactose) {
     _chanceLactose = chanceLactose;
   }
-
-
 }
 
-
 List<InfoFood> Foods = [];
-

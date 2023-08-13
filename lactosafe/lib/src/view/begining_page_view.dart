@@ -1,4 +1,6 @@
+import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
 
 class BeginingPage extends StatefulWidget {
   const BeginingPage({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class _BeginingPageState extends State<BeginingPage> {
             child: Container(
               alignment: Alignment.center,
               child: Image.asset(
-                '/home/vboxuser/Lacsafe/lactosafe-app/lactosafe/lib/src/img/lacsafe_logo_letterless.png',
+                AppImages.logoLetterless,
                 width: 800,
                 height: 800,
               ),
@@ -63,7 +65,8 @@ class _BeginingPageState extends State<BeginingPage> {
                           ),
                           children: <TextSpan>[
                             TextSpan(
-                              text: "Ficamos feliz em te ver como parte da nossa ",
+                              text:
+                                  "Ficamos feliz em te ver como parte da nossa ",
                             ),
                             TextSpan(
                               text: "família",
@@ -90,7 +93,8 @@ class _BeginingPageState extends State<BeginingPage> {
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 20, 20), // Add padding here
+              padding:
+                  const EdgeInsets.fromLTRB(0, 0, 20, 20), // Add padding here
               child: SizedBox(
                 height: 50,
                 child: ElevatedButton(
