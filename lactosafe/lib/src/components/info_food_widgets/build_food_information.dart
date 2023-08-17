@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../model/info_food_model.dart';
 import '../../shared/app_colors.dart';
@@ -33,23 +32,25 @@ Widget buildFoodInformation(
                 width: AppSettings.screenWidth,
                 height: AppSettings.screenHeight / 3,
                 child: ClipPath(
-                  clipper: const ShapeBorderClipper(shape: CircleBorder()),
-                  clipBehavior: Clip.hardEdge,
-                  child: food.getImage != null
-                      ? Image.file(File(food.getImage!.path),
-                          width: 284, height: 267.67, fit: BoxFit.cover)
-                      : Container(
-                          alignment: Alignment.center,
-                          width: AppSettings.screenWidth,
-                          height: AppSettings.screenHeight / 3,
-                          decoration: BoxDecoration(
-                              color: AppColors.grey, shape: BoxShape.circle),
-                          child: const Text(
-                            "Erro ao carregar imagem",
-                            style: TextStyle(color: Colors.white),
-                          ),
+                clipper: const ShapeBorderClipper(shape: CircleBorder()),
+                clipBehavior: Clip.hardEdge,
+                child: food.getImageUrl != null
+                    ? Image.network(food.getImageUrl as String,
+                        width: AppSettings.screenWidth / 4,
+                        height: AppSettings.screenHeight / 2,
+                        fit: BoxFit.cover)
+                    : Container(
+                        width: AppSettings.screenWidth / 4,
+                        height: AppSettings.screenHeight / 2,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: AppColors.grey, shape: BoxShape.circle),
+                        child: const Text(
+                          "Erro ao carregar imagem",
+                          style: TextStyle(color: Colors.white),
                         ),
-                ),
+                      ),
+              ),
               ),
               Stack(
                 alignment: Alignment.topRight,

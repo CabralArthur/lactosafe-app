@@ -202,8 +202,8 @@ Widget listFoodWidget(
               ClipPath(
                 clipper: const ShapeBorderClipper(shape: CircleBorder()),
                 clipBehavior: Clip.hardEdge,
-                child: foods[index].getImage != null
-                    ? Image.file(File(foods[index].getImage!.path),
+                child: foods[index].getImageUrl != null
+                    ? Image.network(foods[index].getImageUrl as String,
                         width: AppSettings.screenWidth / 4,
                         height: AppSettings.screenHeight / 2,
                         fit: BoxFit.cover)
@@ -219,6 +219,7 @@ Widget listFoodWidget(
                         ),
                       ),
               ),
+             
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

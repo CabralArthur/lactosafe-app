@@ -5,9 +5,11 @@ class FoodModel {
   String? helpText;
   double chanceLactose;
   File? image;
+  String? imageUrl;
 
   FoodModel(
       {required this.nome,
+      this.imageUrl,
       this.helpText,
       required this.chanceLactose,
       this.image});
@@ -16,6 +18,7 @@ class FoodModel {
   String? get getHelpText => helpText;
   double get getChanceLactose => chanceLactose;
   File? get getImage => image;
+  String? get getImageUrl => imageUrl;
 
   void setImage(File? newImage) {
     image = newImage;
@@ -34,7 +37,7 @@ class FoodModel {
   }
 
   factory FoodModel.fromMap(Map<String, dynamic> map) {
-    return FoodModel(nome: map["nome"], chanceLactose: map["porcentagem"]);
+    return FoodModel(nome: map["nome"], chanceLactose: map["porcentagem"], imageUrl: map["imageUrl"]);
   }
 }
 
