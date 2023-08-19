@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/view/welcome_page_contents.dart';
-import 'package:LactoSafe/src/view/signin_page_view.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
   void goToNextPage() {
     setState(() {
-      if (currentPage < 4) {
+      if (currentPage <= 4) {
         currentPage++;
       } else {
         () {
@@ -27,7 +26,8 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget pageWidget;
+    String finalPageButton = 'Avançar';
+    Widget pageWidget = Container();
 
     if (currentPage == 0) {
       pageWidget = PageOne();
@@ -38,16 +38,17 @@ class _WelcomePageState extends State<WelcomePage> {
     } else if (currentPage == 3) {
       pageWidget = PageFour();
     } else if (currentPage == 4) {
+      finalPageButton = 'Finalizar';
       pageWidget = PageFive();
     } else {
-      throw Exception("Invalid currentPage value: $currentPage");
+      Navigator.pushNamed(context, '/SignIn');
     }
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          pageWidget, // Use PageOne as the main content
+          pageWidget,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -96,9 +97,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       onPressed: () {
                         goToNextPage();
                       },
-                      child: const Text(
-                        'Avançar',
-                        style: TextStyle(fontSize: 16),
+                      child: Text(
+                        finalPageButton,
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
