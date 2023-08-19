@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:LactoSafe/src/shared/app_images.dart';
+import 'package:LactoSafe/src/view/welcome_page_contents.dart';
+import 'package:LactoSafe/src/view/signin_page_view.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -24,85 +25,9 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: Stack(
         children: [
-          Expanded(
-            flex: 3,
-            child: Container(
-              alignment: Alignment.center,
-              child: Image.asset(
-                AppImages.logoLetterless,
-                width: 800,
-                height: 800,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 16),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.w900,
-                            color: Color.fromARGB(221, 63, 62, 62),
-                          ),
-                          children: [
-                            TextSpan(text: "Seja bem vindo ao "),
-                            TextSpan(
-                                text: "Lactosafe",
-                                style: TextStyle(color: Colors.deepOrange)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: "Um aplicativo que trará lhe trará mais ",
-                            ),
-                            TextSpan(
-                              text: "segurança ",
-                              style: TextStyle(
-                                color: Colors.deepOrange,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "em relação a sua intolerancia a lactose",
-                              style: TextStyle(
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          PageOne(), // Use PageOne as the main content
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -128,13 +53,14 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
               const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-                    child: SizedBox(
-                      width: 100,
-                    ),
-                  )),
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                  child: SizedBox(
+                    width: 100,
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment.bottomRight,
                 child: Padding(

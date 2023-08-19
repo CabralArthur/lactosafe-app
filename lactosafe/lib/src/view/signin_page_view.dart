@@ -7,7 +7,7 @@ import 'package:LactoSafe/src/controller/singin_page_controller.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
-  static const routeName = '/signIn';
+  static const routeName = '/SignIn';
 
   @override
   State<SignIn> createState() => _SignInState();
