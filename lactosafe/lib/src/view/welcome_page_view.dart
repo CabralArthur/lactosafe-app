@@ -17,17 +17,37 @@ class _WelcomePageState extends State<WelcomePage> {
     setState(() {
       if (currentPage < 4) {
         currentPage++;
+      } else {
+        () {
+          Navigator.pushNamed(context, '/SignIn');
+        };
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget pageWidget;
+
+    if (currentPage == 0) {
+      pageWidget = PageOne();
+    } else if (currentPage == 1) {
+      pageWidget = PageTwo();
+    } else if (currentPage == 2) {
+      pageWidget = PageThree();
+    } else if (currentPage == 3) {
+      pageWidget = PageFour();
+    } else if (currentPage == 4) {
+      pageWidget = PageFive();
+    } else {
+      throw Exception("Invalid currentPage value: $currentPage");
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          PageOne(), // Use PageOne as the main content
+          pageWidget, // Use PageOne as the main content
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -73,7 +93,9 @@ class _WelcomePageState extends State<WelcomePage> {
                           borderRadius: BorderRadius.circular(18),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        goToNextPage();
+                      },
                       child: const Text(
                         'Avançar',
                         style: TextStyle(fontSize: 16),

@@ -7,4 +7,8 @@ class AppImages {
   static String userDefault = "assets/images/UserProfile.png";
   static String logoLetterless = "assets/images/lactosafe_logo_letterless.png";
   static String missing_symbol = "assets/images/missing_symbol.png";
+  static String pageTwo = "assets/images/PageTwo.png";
+  static String pageThree = "assets/images/PageThree.png";
+  static String pageFour = "assets/images/PageFour.png";
+  static String pageFive = "assets/images/PageFive.png";
 }
