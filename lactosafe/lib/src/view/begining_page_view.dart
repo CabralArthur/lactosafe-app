@@ -1,9 +1,9 @@
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
-import 'package:LactoSafe/src/shared/app_colors.dart';
 
 class BeginingPage extends StatefulWidget {
-  const BeginingPage({Key? key}) : super(key: key);
+  const BeginingPage({super.key});
+  static const routeName = '/BeginingPage';
 
   @override
   State<BeginingPage> createState() => _BeginingPageState();

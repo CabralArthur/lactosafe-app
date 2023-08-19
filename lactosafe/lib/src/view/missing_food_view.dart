@@ -2,15 +2,15 @@ import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 
-class Missing_Food extends StatefulWidget {
-  const Missing_Food({super.key});
+class MissingFood extends StatefulWidget {
+  const MissingFood({super.key});
   static const routeName = '/missingPage';
 
   @override
-  State<Missing_Food> createState() => _Missing_FoodState();
+  State<MissingFood> createState() => _MissingFoodState();
 }
 
-class _Missing_FoodState extends State<Missing_Food> {
+class _MissingFoodState extends State<MissingFood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
