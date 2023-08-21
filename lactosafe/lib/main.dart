@@ -1,5 +1,6 @@
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/view/begining_page_view.dart';
+import 'package:LactoSafe/src/view/missing_food_registration_view.dart';
 import 'package:LactoSafe/src/view/settings.page.dart';
 import 'package:LactoSafe/src/view/signin_page_view.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
@@ -53,6 +54,8 @@ class MyApp extends StatelessWidget {
           InfoFoodPage.routeName: (context) => const InfoFoodPage(),
           SettingsPage.routeName: (context) => const SettingsPage(),
           MissingFood.routeName: (context) => const MissingFood(),
+          MissingFoodRegistration.routeName: (context) =>
+              const MissingFoodRegistration(),
           BeginingPage.routeName: (context) => const BeginingPage(),
           WelcomePage.routeName: (context) => const WelcomePage(),
         });

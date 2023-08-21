@@ -87,7 +87,7 @@ class _MissingFoodState extends State<MissingFood> {
             padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
             child: ElevatedButton(
               onPressed: () {
-                // Handle button press here
+                Navigator.pushNamed(context, '/MissingFoodRegistration');
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 20),
