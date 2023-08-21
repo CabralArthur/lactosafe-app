@@ -14,12 +14,10 @@ class _WelcomePageState extends State<WelcomePage> {
 
   void goToNextPage() {
     setState(() {
-      if (currentPage <= 4) {
+      if (currentPage < 4) {
         currentPage++;
       } else {
-        () {
-          Navigator.pushNamed(context, '/SignIn');
-        };
+        Navigator.pushNamed(context, '/SignIn');
       }
     });
   }
@@ -40,22 +38,51 @@ class _WelcomePageState extends State<WelcomePage> {
     } else if (currentPage == 4) {
       finalPageButton = 'Finalizar';
       pageWidget = PageFive();
-    } else {
-      Navigator.pushNamed(context, '/SignIn');
     }
+
+    List<Widget> pageIndicator = List.generate(
+      5,
+      (index) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+        child: Container(
+          width: 8,
+          height: 8,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: currentPage == index
+                ? Theme.of(context).primaryColor
+                : Colors.grey,
+          ),
+        ),
+      ),
+    );
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
           pageWidget,
+          Positioned(
+            top: 0,
+            bottom: 0,
+            right: 100,
+            left: 100,
+            child: Padding(
+              //Atenção, gambiarra
+              padding: const EdgeInsets.only(top: 500.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: pageIndicator,
+              ),
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 20, 20),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                   child: SizedBox(
                     height: 50,
                     child: TextButton(
