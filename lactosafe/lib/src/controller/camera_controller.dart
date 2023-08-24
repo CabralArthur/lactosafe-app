@@ -1,60 +1,45 @@
 import 'dart:io';
-import 'package:LactoSafe/src/model/user_model.dart';
 import 'package:LactoSafe/src/shared/app_camera_source.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../model/info_food_model.dart';
 
+abstract class Picture {
+  void takePicture({required BuildContext context, required CameraSource sourceType});
+}
 
-XFile? image;
-void takePicture(BuildContext context, CameraSouce sourceType, bool isFood) async {
-
-    if (sourceType == CameraSouce.camera) {
-
+class CameraFoodPicture implements Picture {
+  @override
+  void takePicture({required BuildContext context, required CameraSource sourceType}) async {
+    XFile? image;
+    if (sourceType == CameraSource.camera) {
       image = await ImagePicker().pickImage(source: ImageSource.camera);
-
-      if(isFood & (image != null)){
-        // ignore: use_build_context_synchronously
-        settingFoodImage(context);
-       
-      } 
+      if(image != null) {
+         if(context.mounted) {
+         Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image!.path));
+      }
+      }
       
-
     } else {
-        image = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-         if(isFood & (image != null)){
-          // ignore: use_build_context_synchronously
-          settingFoodImage(context);
-       
-        } else {
-          settingUserPicture();
-        }
-        
-      }
-
+      throw UnimplementedError("Ocorreu um erro. Tente novamente.");
+    }
+  }
 }
 
-void settingFoodImage(BuildContext context) {
-   if(Foods.isEmpty) {
-          InfoFood foodAnalyzed = InfoFood('', '', '', File(image!.path));
-          Foods.add(foodAnalyzed);
-    } else {
-      Foods[0].setImage(File(image!.path));
-    }
-          
-    if (context.mounted) {
-      Navigator.popAndPushNamed(context, '/InfoAlimento');
-    }
-
-}
-
-void settingUserPicture() {
-  if(userPicture.isEmpty) {
-        User profilePicture = User(File(image!.path));
-        userPicture.add(profilePicture);
-  } else {
-        userPicture[0].setImage(File(image!.path));
+class GalleryFoodPicture implements Picture {
+  @override
+  void takePicture({required BuildContext context, required CameraSource sourceType}) async {
+    XFile? image;
+    if (sourceType == CameraSource.gallery) {
+      image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if(image != null) {
+        if(context.mounted) {
+        Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image!.path));
       }
-        
+
+      }
+      
+    } else {
+      throw UnimplementedError("Ocorreu um erro. Tente novamente.");
+    }
+  }
 }

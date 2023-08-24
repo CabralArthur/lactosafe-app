@@ -1,5 +1,4 @@
 import 'package:LactoSafe/src/components/photo_widget.dart';
-import 'package:LactoSafe/src/shared/app_camera_source.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
@@ -8,7 +7,7 @@ import 'package:LactoSafe/src/view/map_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../controller/camera_controller.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,8 +32,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          toolbarHeight: AppSettings.screenHeight / 12,
-          // backgroundColor: AppColors.orange,
+          toolbarHeight: AppSettings.screenHeight/12,
           leading: PhotoWidget(picture: null, height: 4, width: 4),
           actions: [
             Padding(
@@ -59,13 +57,11 @@ class _HomePageState extends State<HomePage> {
             child: FittedBox(
                 child: FloatingActionButton.large(
               onPressed: () {
-                takePicture(context, CameraSouce.gallery, true);
+                Navigator.pushNamed(context, '/camera');
+                
               },
               backgroundColor: AppColors.orange,
-              child: const Icon(
-                Icons.camera_alt_outlined,
-                size: 50.0,
-              ),
+              child: Image.asset(AppImages.cameraIcon)
             ))),
         bottomNavigationBar: SizedBox(
           height: 90,
@@ -84,16 +80,16 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: AppColors.orange,
         currentIndex: _indiceAtual,
         onTap: onTabTapped,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-              ),
+              icon: 
+              Image.asset(AppImages.homeIcon),
+
               label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.map_outlined,
-              ),
+              icon: 
+              Image.asset(AppImages.mapIcon),
+
               label: 'Mapa')
         ],
       ),

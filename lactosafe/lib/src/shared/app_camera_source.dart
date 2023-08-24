@@ -1,4 +1,4 @@
-enum CameraSouce {
+enum CameraSource {
   gallery,
   camera
 }
