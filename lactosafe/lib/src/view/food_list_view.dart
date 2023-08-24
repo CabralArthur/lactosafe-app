@@ -134,7 +134,9 @@ class _FoodListViewState extends State<FoodListView> {
                       ),
                     ),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.popAndPushNamed(context, "/missingPage");
+                      },
                       borderRadius: const BorderRadius.all(Radius.circular(25)),
                       child: SizedBox(
                         width: AppSettings.screenWidth / 2,
