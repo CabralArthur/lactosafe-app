@@ -37,18 +37,16 @@ class _HomePageState extends State<HomePage> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 15.0),
-              child: 
-                InkWell(
-                  onTap: () {
-                    Navigator.popAndPushNamed(context, '/settings');
-                  },
-                  child: 
-                    SvgPicture.asset(AppImages.menuIcon, height: AppSettings.screenHeight/15,),
-                  
+              child: InkWell(
+                onTap: () {
+                  Navigator.popAndPushNamed(context, '/settings');
+                },
+                child: SvgPicture.asset(
+                  AppImages.menuIcon,
+                  height: AppSettings.screenHeight / 15,
                 ),
-              
+              ),
             ),
-          
           ],
         ),
         body: _pages.elementAt(_indiceAtual),

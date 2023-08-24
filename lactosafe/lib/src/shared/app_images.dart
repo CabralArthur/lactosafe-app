@@ -6,7 +6,7 @@ class AppImages {
   static String userPicture = "assets/images/userPhoto.png";
   static String userDefault = "assets/images/UserProfile.png";
   static String logoLetterless = "assets/images/lactosafe_logo_letterless.png";
-  static String smileEmoji = "assets/images/SmileEmoji.svg";
+static String smileEmoji = "assets/images/SmileEmoji.svg";
   static String doubtEmoji = "assets/images/DoubtEmoji.svg";
   static String medianEmoji = "assets/images/MedianEmoji.svg";
   static String surprisedEmoji = "assets/images/SurprisedEmoji.svg";
@@ -17,5 +17,10 @@ class AppImages {
   static String homeIcon = "assets/images/homeIcon.png";
   static String mapIcon = "assets/images/mapIcon.png";
   static String doubtIcon = "assets/images/doubtIcon.svg";
+  static String missing_symbol = "assets/images/missing_symbol.png";
+  static String pageTwo = "assets/images/PageTwo.png";
+  static String pageThree = "assets/images/PageThree.png";
+  static String pageFour = "assets/images/PageFour.png";
+  static String pageFive = "assets/images/PageFive.png";
 
 }

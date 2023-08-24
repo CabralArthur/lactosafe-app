@@ -6,27 +6,37 @@ class CustomTextField extends StatelessWidget {
   final double iconSize;
   final bool isObscure;
   final String? Function(String?)? validator;
+  final TextEditingController controller;
 
 
 
-  const CustomTextField({super.key, required this.icon, this.iconSize=20, required this.label,  this.isObscure = false, this.validator});
+const CustomTextField({
+    Key? key,
+    required this.icon,
+    required this.label,
+    this.isObscure = false,
+    this.iconSize=20,
+    this.validator,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
-                      validator: validator,
-                      obscureText: isObscure,
-                      decoration: InputDecoration(
-                        prefixIcon:  Icon(icon, size: iconSize,),
-                        labelText: label,
-                        isDense: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18)
-                        )
-                      ),
-                    ),
+        controller: controller,
+        validator: validator,
+        obscureText: isObscure,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon, size: iconSize,),
+          labelText: label,
+          isDense: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+        ),
+      ),
     );
   }
 }
