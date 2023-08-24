@@ -1,5 +1,4 @@
 import 'package:LactoSafe/src/components/photo_widget.dart';
-import 'package:LactoSafe/src/shared/app_camera_source.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
@@ -8,7 +7,6 @@ import 'package:LactoSafe/src/view/map_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../controller/camera_controller.dart';
 
 
 class HomePage extends StatefulWidget {

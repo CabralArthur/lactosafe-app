@@ -1,6 +1,5 @@
 import 'package:LactoSafe/src/components/info_food_widgets/emoji_risk_measuring_item.dart';
 import 'package:LactoSafe/src/components/info_food_widgets/point_risk_measuring_itens.dart';
-import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:flutter/material.dart';
 

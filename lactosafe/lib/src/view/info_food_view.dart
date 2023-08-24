@@ -1,7 +1,6 @@
 import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import '../components/info_food_widgets/build_food_information.dart';
 
 class InfoFoodPage extends StatefulWidget {
@@ -15,7 +14,7 @@ class InfoFoodPage extends StatefulWidget {
 class _InfoFoodPageState extends State<InfoFoodPage> {
   @override
   Widget build(BuildContext context) {
-    final Food = ModalRoute.of(context)!.settings.arguments as FoodModel;
+    final food = ModalRoute.of(context)!.settings.arguments as FoodModel;
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -28,7 +27,7 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
             alignment: Alignment.topLeft,
           ),
         ),
-        body: buildFoodInformation(food: Food));
+        body: buildFoodInformation(food: food));
             
   }
 }

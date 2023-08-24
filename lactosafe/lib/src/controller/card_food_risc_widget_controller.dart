@@ -1,6 +1,5 @@
 // criar a parte da logica da barrinha de risco colorida com o nome do nivel de risco aqui
 
-import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 

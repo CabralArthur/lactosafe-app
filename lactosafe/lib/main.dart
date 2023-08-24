@@ -1,7 +1,7 @@
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/view/camera_view.dart';
 import 'package:LactoSafe/src/view/food_list_view.dart';
-import 'package:LactoSafe/src/view/settings.page.dart';
+import 'package:LactoSafe/src/view/settings_page.dart';
 import 'package:LactoSafe/src/view/signin_page_view.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:LactoSafe/src/view/home_page.dart';

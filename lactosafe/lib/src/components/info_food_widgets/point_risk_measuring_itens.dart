@@ -1,5 +1,4 @@
 import 'package:LactoSafe/src/controller/Info_food_controllers/risk_measuring_items_position_controller.dart';
-import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:flutter/material.dart';
 

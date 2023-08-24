@@ -13,7 +13,6 @@ Future login(String email, String password) async {
     return responseString;
   } else {
     // Error in the request, handle the error here
-    print('Error in the request: ${response.statusCode}');
-    throw Exception('Error in the request');
+    throw Exception('Error in the request: ${response.statusCode}');
   }
 }
