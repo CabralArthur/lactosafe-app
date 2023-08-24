@@ -1,5 +1,6 @@
 import 'package:LactoSafe/src/components/info_food_widgets/emoji_risk_measuring_item.dart';
 import 'package:LactoSafe/src/components/info_food_widgets/point_risk_measuring_itens.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:flutter/material.dart';
 
@@ -9,26 +10,52 @@ class RiskMeasuringBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: <Widget>[
-        Container(
-          width: AppSettings.screenWidth,
-          height: AppSettings.screenHeight / 24,
-          decoration: ShapeDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment(-1.00, -0.00),
-              end: Alignment(1, 0),
-              colors: [Color(0xFF05FF00), Color(0xFFF9FF00), Color(0xFFDB1212)],
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+    return Stack(clipBehavior: Clip.none, children: <Widget>[
+      Row(
+        children: [
+          Container(
+            width: AppSettings.screenWidth / 6,
+            height: AppSettings.screenHeight / 24,
+            decoration: ShapeDecoration(
+              color: AppColors.greenShadow,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0)),
+              ),
             ),
           ),
-        ),
-        pointRiskMeasuringItem(risk: foodRisk),
-        emojiRiskMeasuringItem(risk: foodRisk),
-      ],
-    );
+          Container(
+            width: AppSettings.screenWidth / 6,
+            height: AppSettings.screenHeight / 24,
+            color: AppColors.green,
+          ),
+          Container(
+            width: AppSettings.screenWidth / 6,
+            height: AppSettings.screenHeight / 24,
+            color: AppColors.yellow,
+          ),
+          Container(
+            width: AppSettings.screenWidth / 6,
+            height: AppSettings.screenHeight / 24,
+            color: AppColors.orange,
+          ),
+          Container(
+            width: AppSettings.screenWidth / 6,
+            height: AppSettings.screenHeight / 24,
+            decoration: ShapeDecoration(
+              color: AppColors.red,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0)),
+              ),
+            ),
+          )
+        ],
+      ),
+      pointRiskMeasuringItem(risk: foodRisk),
+      emojiRiskMeasuringItem(risk: foodRisk),
+    ]);
   }
 }
