@@ -109,6 +109,8 @@ class _SignInState extends State<SignIn> {
                       InkWell(
                         onTap: () {
                           //Vai pro login com google
+                          Navigator.popAndPushNamed(context, "/home");
+
                         },
                         child: Image.asset(
                           AppImages.googleIcon,
