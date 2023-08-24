@@ -47,10 +47,11 @@ class _HomePageBodyState extends State<HomePageBody> {
 
               //Barra de Pesquisa
 
-              const CustomTextField(
+              CustomTextField(
                 icon: Icons.search_rounded,
                 label: "Pesquisar",
                 iconSize: 28.0,
+                controller: TextEditingController(),
               ),
 
               SizedBox(
