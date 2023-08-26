@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 
-class Cadastro extends StatefulWidget {
-  const Cadastro({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
-  static const routeName = '/Cadastro';
+  static const routeName = '/signup';
 
   @override
-  State<Cadastro> createState() => _CadastroState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _CadastroState extends State<Cadastro> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

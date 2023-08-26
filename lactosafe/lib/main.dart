@@ -12,7 +12,7 @@ import 'package:LactoSafe/src/view/reset_password_view.dart';
 import 'package:LactoSafe/src/view/missing_food_view.dart';
 import 'package:LactoSafe/src/view/welcome_page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:LactoSafe/src/view/cadastro_page_view.dart';
+import 'package:LactoSafe/src/view/signup_page_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
               const MissingFoodRegistration(),
           BeginingPage.routeName: (context) => const BeginingPage(),
           WelcomePage.routeName: (context) => const WelcomePage(),
-          Cadastro.routeName: (context) => const Cadastro(),
+          SignUpPage.routeName: (context) => const SignUpPage(),
         });
   }
 }
