@@ -129,7 +129,9 @@ class _SignInState extends State<SignIn> {
                             style: TextStyle(fontSize: 15),
                           ),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.popAndPushNamed(context, '/cadastro')
+                              },
                               child: Text(
                                 'Cadastre-se aqui!',
                                 style: TextStyle(
