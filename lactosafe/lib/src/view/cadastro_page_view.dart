@@ -36,7 +36,7 @@ class _CadastroState extends State<Cadastro> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          borderRadius: BorderRadius.circular(30.0),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                           side: BorderSide(color: AppColors.grey),
                         ),
                         onPressed: () { },
@@ -59,7 +59,7 @@ class _CadastroState extends State<Cadastro> {
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           backgroundColor: Colors.white,
-                          borderRadius: BorderRadius.circular(30.0),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                           side: BorderSide(color: AppColors.grey),
                         ),
                         onPressed: () {
