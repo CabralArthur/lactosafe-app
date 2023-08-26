@@ -4,7 +4,6 @@ import 'package:LactoSafe/src/view/food_list_view.dart';
 import 'package:LactoSafe/src/view/begining_page_view.dart';
 import 'package:LactoSafe/src/view/missing_food_registration_view.dart';
 import 'package:LactoSafe/src/view/settings_page.dart';
-import 'package:LactoSafe/src/view/settings.page.dart';
 import 'package:LactoSafe/src/view/signin_page_view.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:LactoSafe/src/view/home_page.dart';
