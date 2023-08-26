@@ -27,94 +27,48 @@ class _CadastroState extends State<Cadastro> {
             ),
           ),
           Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-              child: SizedBox( 
-                height: 10,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle button press here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      height: 100,
-                      borderRadius: BorderRadius.circular(30.0),
-                      side: BorderSide(color: AppColors.grey),
+            child: SingleChildScrollView(
+              child: Column( 
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children:[
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18))),
+                        onPressed: () { },
+                        child: const Text(
+                          'Continue com o google',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    'Cadastre com Email',
-                    style: TextStyle(
-                      color: AppColors.grey,
-                      fontSize: 18,
+                    const Padding(
+                      padding: EdgeInsets.symmetric(),
+                      child: Text(
+                        "Ou",
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54 ),
+                      ),
                     ),
-                  ),
-                ),
+                    SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18))),
+                        onPressed: () {
+                        },
+                        child: const Text(
+                          'Cadastre-se com e-mail',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ),
+                ]
               ),
             ),
-          ),
-
-      // #### TEXTO "OU" #### 
-          const Padding(
-            padding: EdgeInsets.symmetric(),
-            child: Text(
-              "Ou",
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54 ),
-              
-            ),
-
-          ),
-
-
-/*
-          Container(
-            margin: EdgeInsets.fromLTRB(1*fem, 0*fem, 0*fem, 25*fem),
-            child: Text(
-              'Ou',
-              textAlign: TextAlign.center,
-              style: SafeGoogleFont(
-                'Roboto',
-                fontSize: 18*ffem,
-                fontWeight:  FontWeight.w400,
-        
-              ),
-            ),
-          ),
-*/
-
-
-//  ### SEGUNDO BOTÃO ####
-          Expanded(
-            flex: 3,
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-              child: ElevatedButton(
-                onPressed: (){
-
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: AppColors.grey),
-                  ),
-                ),
-                child: Text(
-                  'Continue com o Google',
-                  style: TextStyle(
-                    color: AppColors.grey,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          )
         ],
       ),
     );
