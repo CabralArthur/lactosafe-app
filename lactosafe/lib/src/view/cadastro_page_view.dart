@@ -35,8 +35,10 @@ class _CadastroState extends State<Cadastro> {
                       height: 50,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18))),
+                          backgroundColor: Colors.white,
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(color: AppColors.grey),
+                        ),
                         onPressed: () { },
                         child: const Text(
                           'Continue com o google',
@@ -55,8 +57,11 @@ class _CadastroState extends State<Cadastro> {
                       height: 50,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18))),
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          backgroundColor: Colors.white,
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(color: AppColors.grey),
+                        ),
                         onPressed: () {
                         },
                         child: const Text(
