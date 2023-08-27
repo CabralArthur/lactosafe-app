@@ -85,7 +85,7 @@ Widget buildFoodInformation({required FoodModel food}) {
           SizedBox(
             height: AppSettings.screenHeight / 15,
           ),
-          RiskMeasuringBar(foodRisk: food.getChanceLactose),
+          RiskMeasuringBar(foodRisk: food.getLactoseRisk as double),
           SizedBox(
             height: AppSettings.screenHeight / 30,
           ),
@@ -94,20 +94,27 @@ Widget buildFoodInformation({required FoodModel food}) {
                             text: 'Risco de conter lactose: ',
                             style: TextStyle(
                               color: AppColors.grey,
-                              fontSize: 20,
+                              fontSize: 18,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w900,
                             ),
                           ), TextSpan(
-                            text: '${food.getChanceLactose}% ',
+                            text: '${food.getLactoseRiskStr}',
                             style: TextStyle(
-                              color: foodRiskTextColor(risk: 'Alto'),
-                              fontSize: 20,
+                              color: foodRiskTextColor(risk: food.getLactoseRiskStr as String),
+                              fontSize: 18,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w900,
                             ),
                           ),])),
           ),
+          SizedBox(height: AppSettings.screenHeight/30,),
+          Text(food.getHelpText as String, style: TextStyle(
+              color: AppColors.grey,
+              fontSize: 16,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+            ),),
           
         ],
       ),
