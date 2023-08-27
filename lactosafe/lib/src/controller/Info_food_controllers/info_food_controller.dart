@@ -1,36 +1,36 @@
-// import 'dart:convert';
-// import 'dart:io';
-// import 'package:LactoSafe/src/model/info_food_model.dart';
-// import 'package:flutter/material.dart';
-// import "package:http/http.dart" as http;
+import 'dart:convert';
 
+import 'package:LactoSafe/src/http/http_get_lactose_risk.dart';
+import 'package:LactoSafe/src/model/info_food_model.dart';
 
+Future<FoodModel> getFoodRisk({required FoodModel food}) async {
+  final HttpGetLactoseRisk client = HttpGetLactoseRisk();
+  int functionGetUserId = 1; //fazer função para pegar id do usuario que esta utilizando o aplicativo.
 
-// Future setFoodInformation(File? image) async {
-//   //O ipv4 varia de acordo com a maquina
-//   var url = Uri.parse('http://192.168.0.109:5000/recognize-image');
+  final response = await client.post(
+      url: "http://192.168.0.109:5000/calcular_risco",
+      userId: functionGetUserId,
+      foodName: food.getFoodName);
 
-//   var request = http.MultipartRequest('POST', url);
-//   request.files.add(await http.MultipartFile.fromPath('image', image!.path));
+  if(response.statusCode == 200){
+    //var responseString = await response.toString();
+    final decodedResponse = await jsonDecode(response.body);
+    food.setLactoseRisk(decodedResponse["risco_lactose"]);
+    food.setLactoseRiskStr(decodedResponse["risco_str"]);
+    food.setHelpText(decodedResponse["texto_ajuda"]);
 
-//   var response = await request.send();
+    print(decodedResponse);
+    print(decodedResponse["risco_str"]);
+    print(decodedResponse["risco_lactose"]);
+    print(decodedResponse["texto_ajuda"]);
 
-//   if (response.statusCode == 200) {
-//     // Requisição bem-sucedida, trate a resposta aqui
-    
-//     var responseString = await response.stream.bytesToString();
-//     final decodeResponse = jsonDecode(responseString);
-//     debugPrint(responseString);
-//     Foods[0].setNome(decodeResponse['nome']);
-//     Foods[0].setChanceLactose(decodeResponse['porcentagem']);
-//     Foods.add(FoodModel(nome: "Churrasco",helpText:'_helpText',chanceLactose: 70, image: null));
-//     Foods.add(FoodModel(nome: "Camarao", helpText: '_helpText',chanceLactose: 90, image: null));
+    print(food.getLactoseRisk);
+    print(food.getLactoseRiskStr);
+  } else {
+    throw response.statusCode;
+  }
 
-//     return Foods;
-    
-//   } else {
-//     // Erro na requisição, trate o erro aqui
-//     print('Erro na requisição: ${response.statusCode}');
-//   }
-// }
+  return food;
+  
+}
 
