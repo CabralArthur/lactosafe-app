@@ -171,14 +171,14 @@ Widget buildFoodCard({required FoodModel food}) => Container(
                       height: 28,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.0),
-                          color: riskFood(risk: food.getChanceLactose)?.first),
+                          color: riskFood(risk: food.getLactoseRisk as double)?.first),
                     ),
                     Text(
-                      riskFood(risk: food.getChanceLactose)?.last,
+                      riskFood(risk: food.getLactoseRisk as double)?.last,
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
-                          color: riskFood(risk: food.getChanceLactose)?.first),
+                          color: riskFood(risk: food.getLactoseRisk as double)?.first),
                     )
                   ],
                 )

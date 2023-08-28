@@ -1,3 +1,4 @@
+import 'package:LactoSafe/src/controller/Info_food_controllers/info_food_controller.dart';
 import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,27 @@ class InfoFoodPage extends StatefulWidget {
 }
 
 class _InfoFoodPageState extends State<InfoFoodPage> {
+  Future<FoodModel>? _future;
+
+  @override
+  void initState() {
+    super.initState();
+    _future = myFuture();
+  }
+
+  Future<FoodModel> myFuture() async {
+    await Future.delayed(const Duration(seconds: 2));
+    // ignore: use_build_context_synchronously
+    final food = ModalRoute.of(context)!.settings.arguments as FoodModel;
+    Future<FoodModel> foodRisk = getFoodRisk(food: food);
+    
+   return foodRisk;
+  }
+
   @override
   Widget build(BuildContext context) {
     final food = ModalRoute.of(context)!.settings.arguments as FoodModel;
+    getFoodRisk(food: food);
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -27,7 +46,16 @@ class _InfoFoodPageState extends State<InfoFoodPage> {
             alignment: Alignment.topLeft,
           ),
         ),
-        body: buildFoodInformation(food: food));
+        body: FutureBuilder(future: _future, builder: (context, AsyncSnapshot snapshot) {
+          if(snapshot.data == null) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return buildFoodInformation(food: food);
+          }
+        }
+        ));
+        
+        
             
   }
 }
