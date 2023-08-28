@@ -98,7 +98,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                 } else {
                   print("Funcionando");
 
-                  return FoodRecord(userFoodsRecords: snapshot.data);
+                  return FoodRecord(userFoodsRecords: snapshot.data, filter: snapshot.data,);
                   
                 }
               },)
