@@ -27,51 +27,69 @@ class _CadastroState extends State<Cadastro> {
             ),
           ),
           Expanded(
+            flex: 4,
             child: SingleChildScrollView(
-              child: Column( 
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children:[
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
                     SizedBox(
                       height: 50,
+                      width: 400,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                          side: BorderSide(color: AppColors.grey),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            side: BorderSide(color: AppColors.grey),
+                          ),
                         ),
-                        onPressed: () { },
-                        child: const Text(
-                          'Continue com o google',
-                          style: TextStyle(fontSize: 18),
+                        onPressed: () {},
+                        child: Text(
+                          'Cadastro com o Google',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.symmetric(),
+                      padding: EdgeInsets.symmetric(vertical: 8),
                       child: Text(
                         "Ou",
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black54 ),
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
                       ),
                     ),
                     SizedBox(
                       height: 50,
+                      width: 400,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 70),
                           backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                          side: BorderSide(color: AppColors.grey),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            side: BorderSide(color: AppColors.grey),
+                          ),
                         ),
                         onPressed: () {
+                          Navigator.popAndPushNamed(
+                              context, '/CadastroInformation');
                         },
-                        child: const Text(
-                          'Cadastre-se com e-mail',
-                          style: TextStyle(fontSize: 18),
+                        child: Text(
+                          'Fazer cadastro',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: AppColors.grey,
+                          ),
                         ),
                       ),
                     ),
-                ]
-              ),
+                  ]),
             ),
           )
         ],

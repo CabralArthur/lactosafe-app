@@ -13,6 +13,7 @@ import 'package:LactoSafe/src/view/missing_food_view.dart';
 import 'package:LactoSafe/src/view/welcome_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/view/cadastro_page_view.dart';
+import 'package:LactoSafe/src/view/cadastro_informações_page_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,6 +65,8 @@ class MyApp extends StatelessWidget {
           BeginingPage.routeName: (context) => const BeginingPage(),
           WelcomePage.routeName: (context) => const WelcomePage(),
           Cadastro.routeName: (context) => const Cadastro(),
+          CadastroInformation.routeName: (context) =>
+              const CadastroInformation(),
         });
   }
 }
