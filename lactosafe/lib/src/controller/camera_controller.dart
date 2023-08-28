@@ -15,7 +15,7 @@ class CameraFoodPicture implements Picture {
       image = await ImagePicker().pickImage(source: ImageSource.camera);
       if(image != null) {
          if(context.mounted) {
-         Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image!.path));
+         Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image.path));
       }
       }
       
@@ -33,7 +33,7 @@ class GalleryFoodPicture implements Picture {
       image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if(image != null) {
         if(context.mounted) {
-        Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image!.path));
+        Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image.path));
       }
 
       }
