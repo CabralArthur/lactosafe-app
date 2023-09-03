@@ -29,7 +29,6 @@ class _HomePageBodyState extends State<HomePageBody> {
   Future<List<FoodModel>> getRecordFuture() async {
     await Future.delayed(const Duration(seconds: 2));
     Future<List<FoodModel>> userRecords = userRecordsStore.getUserRecord();
-    print(userRecords);
     return userRecords;
   }
 
@@ -96,8 +95,6 @@ class _HomePageBodyState extends State<HomePageBody> {
                 if(snapshot.data == null) {
                   return const Center(child: CircularProgressIndicator(),);
                 } else {
-                  print("Funcionando");
-
                   return FoodRecord(userFoodsRecords: snapshot.data, filter: snapshot.data,);
                   
                 }
