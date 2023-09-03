@@ -69,8 +69,6 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                     ),
-
-<<<<<<< HEAD
                     //Entrar
                     SizedBox(
                       height: 50,
@@ -130,7 +128,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Navigator.popAndPushNamed(context, '/Cadastro');
+                              Navigator.popAndPushNamed(context, '/signup');
                             },
                             child: Text(
                               'Cadastre-se aqui!',
@@ -140,29 +138,6 @@ class _SignInState extends State<SignIn> {
                       ],
                     )
                   ],
-=======
-                      ///CadastroButton
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Não possui uma conta?',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          TextButton(
-                              onPressed: () {
-                                Navigator.popAndPushNamed(context, '/signup');
-                              },
-                              child: Text(
-                                'Cadastre-se aqui!',
-                                style: TextStyle(
-                                    fontSize: 15, color: AppColors.orange),
-                              )),
-                        ],
-                      )
-                    ],
-                  ),
->>>>>>> 50d9f3d131c8f217d32698f210c384f5892dc6ff
                 ),
               ),
             ),

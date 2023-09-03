@@ -12,12 +12,9 @@ import 'package:LactoSafe/src/view/reset_password_view.dart';
 import 'package:LactoSafe/src/view/missing_food_view.dart';
 import 'package:LactoSafe/src/view/welcome_page_view.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:LactoSafe/src/view/cadastro_page_view.dart';
 import 'package:LactoSafe/src/view/cadastro_informações_page_view.dart';
-=======
 import 'package:LactoSafe/src/view/signup_page_view.dart';
->>>>>>> 50d9f3d131c8f217d32698f210c384f5892dc6ff
+
 
 void main() {
   runApp(const MyApp());
@@ -68,13 +65,9 @@ class MyApp extends StatelessWidget {
               const MissingFoodRegistration(),
           BeginingPage.routeName: (context) => const BeginingPage(),
           WelcomePage.routeName: (context) => const WelcomePage(),
-<<<<<<< HEAD
-          Cadastro.routeName: (context) => const Cadastro(),
           CadastroInformation.routeName: (context) =>
               const CadastroInformation(),
-=======
           SignUpPage.routeName: (context) => const SignUpPage(),
->>>>>>> 50d9f3d131c8f217d32698f210c384f5892dc6ff
         });
   }
 }
