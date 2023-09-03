@@ -1,36 +1,57 @@
 import 'dart:io';
 
-class InfoFood {
-  String _nome;
-  String _helpText;
-  String _chanceLactose;
-  File? _image;
+class FoodModel {
+  String nome;
+  String? helpText;
+  double? lactoseRisk;
+  String? lactoseRiskStr;
+  double? chanceAlimento;
+  File? userFoodImage;
+  String? imageUrl;
 
-  InfoFood(this._nome, this._helpText, this._chanceLactose, this._image);
+  FoodModel(
+      {required this.nome,
+      this.imageUrl,
+      this.helpText,
+      this.chanceAlimento,
+      this.lactoseRisk,
+      this.lactoseRiskStr,
+      this.userFoodImage});
 
-  String get getFoodName => _nome;
-  String get getHelpText => _helpText;
-  String get getChanceLactose => _chanceLactose;
-  File? get getImage => _image;
+  String get getFoodName => nome;
+  String? get getHelpText => helpText;
+  double? get getLactoseRisk => lactoseRisk;
+  String? get getLactoseRiskStr => lactoseRiskStr;
+  double? get getChanceAlimento => chanceAlimento;
+  File? get getImage => userFoodImage;
+  String? get getImageUrl => imageUrl;
 
-  void setImage(File? image) {
-    _image = image;
+  void setImage(File? newImage) {
+    userFoodImage = newImage;
   }
 
-  void setNome(String nome) {
-    _nome = nome;
+  void setNome(String newNome) {
+    nome = newNome;
   }
 
-  void setHelpText(String helpText) {
-    _helpText = helpText;
-  }
-  void setChanceLactose(String chanceLactose) {
-    _chanceLactose = chanceLactose;
+  void setHelpText(String newhelpText) {
+    helpText = newhelpText;
   }
 
+  void setLactoseRisk(double newLactoseRisk) {
+    lactoseRisk = newLactoseRisk;
+  }
 
+  void setLactoseRiskStr(String newlactoseRiskString) {
+    lactoseRiskStr = newlactoseRiskString;
+  }
+
+  factory FoodModel.fromMap(Map<String, dynamic> map) {
+    return FoodModel(nome: map["nome"], chanceAlimento: map["porcentagem"], imageUrl: map["imageUrl"]);
+  }
+
+  factory FoodModel.recordFromMap(Map<String, dynamic> map) {
+    return FoodModel(nome: map["nome"], lactoseRisk: map["risco_float"], lactoseRiskStr: map["risco_str"], imageUrl: map["imageUrl"], helpText: map["texto_ajuda"]);
+  }
 }
-
-
-List<InfoFood> Foods = [];
 

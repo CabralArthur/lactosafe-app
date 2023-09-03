@@ -34,6 +34,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: CustomTextField(
+                      controller: TextEditingController(),
                       icon: Icons.email,
                       label: 'Email',
                       validator: (value) => validateForm(value),
@@ -64,7 +65,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                             ],
                           ),
                         ),
-                      ), 
+                      ),
                     ],
                   )
                 ]),

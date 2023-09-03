@@ -1,6 +1,4 @@
 import 'package:LactoSafe/src/components/photo_widget.dart';
-import 'package:LactoSafe/src/controller/camera_controller.dart';
-import 'package:LactoSafe/src/shared/app_camera_source.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:LactoSafe/src/shared/app_settings.dart';
@@ -46,7 +44,6 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 10,),
 
               TextButton(onPressed: () {
-                takePicture(context, CameraSouce.gallery, false);
                 setState(() {
                   
                 });

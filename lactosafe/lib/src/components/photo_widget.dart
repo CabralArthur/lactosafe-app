@@ -25,6 +25,7 @@ class _PhotoWidgetState extends State<PhotoWidget> {
               height: widget.height,
               child: Container(
                 decoration: BoxDecoration(
+                  color: Colors.white,
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.contain,

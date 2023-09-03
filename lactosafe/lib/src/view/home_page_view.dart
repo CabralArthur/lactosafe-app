@@ -1,3 +1,10 @@
+import 'package:LactoSafe/src/components/food_record_widget.dart';
+import 'package:LactoSafe/src/components/custom_text_field.dart';
+import 'package:LactoSafe/src/http/http_get_user_record.dart';
+import 'package:LactoSafe/src/model/info_food_model.dart';
+import 'package:LactoSafe/src/repositories/user_record_repository.dart';
+import 'package:LactoSafe/src/shared/app_colors.dart';
+import 'package:LactoSafe/src/shared/app_settings.dart';
 import 'package:flutter/material.dart';
 
 class HomePageBody extends StatefulWidget {
@@ -8,184 +15,95 @@ class HomePageBody extends StatefulWidget {
 }
 
 class _HomePageBodyState extends State<HomePageBody> {
+  FoodModel foodTest = FoodModel(nome: "Creme de Leite", helpText: "_helpText", chanceAlimento: 0, lactoseRisk: 0.0, lactoseRiskStr: 'Teste', userFoodImage: null);
+  final UserRecordRepository userRecordsStore = UserRecordRepository(client: HttpGetUserRecord());
+  Future<List<FoodModel>>? _recordFuture;
+
   @override
-  Widget build(BuildContext Context) {
+  void initState(){
+    super.initState();
+    _recordFuture = getRecordFuture();
+    
+  }
+
+  Future<List<FoodModel>> getRecordFuture() async {
+    await Future.delayed(const Duration(seconds: 2));
+    Future<List<FoodModel>> userRecords = userRecordsStore.getUserRecord();
+    return userRecords;
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(26.0),
-        children: [
-          //Procure Produtos
-          const SizedBox(
-            width: 264,
-            child: Text(
-              'Procure produtos ',
-              style: TextStyle(
-                color: Color(0xC11E1E1E),
-                fontSize: 24,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w900,
-                letterSpacing: 2.40,
-              ),
-            ),
-          ),
-
-          //Barra de Pesquisa
-          SizedBox(
-            width: 337,
-            height: 56,
-            child: Stack(
-              children: [
-                Positioned(
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      width: 337,
-                      height: 56,
-                      decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25)),
-                          color: const Color(0x66D9D9D9)),
-                    )),
-                Positioned(
-                  left: 18,
-                  top: 17,
-                  child: SizedBox(
-                    width: 25.32,
-                    height: 22,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 22,
-                            height: 22,
-                            decoration: const ShapeDecoration(
-                              shape: OvalBorder(
-                                side: BorderSide(
-                                    width: 1, color: Color(0xC11E1E1E)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 19.47,
-                          top: 17.51,
-                          child: Transform(
-                            transform: Matrix4.identity()
-                              ..translate(0.0, 0.0)
-                              ..rotateZ(0.63),
-                            child: Container(
-                              width: 7.24,
-                              decoration: const ShapeDecoration(
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                    width: 1,
-                                    strokeAlign: BorderSide.strokeAlignCenter,
-                                    color: Color(0xC11E1E1E),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+        child: SizedBox(
+          height: AppSettings.screenHeight,
+          child: Column(
+            children: [
+              //Procure Produtos
+              SizedBox(
+                width: AppSettings.screenWidth,
+                child: Text(
+                  'Procure produtos ',
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 24,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 2.40,
                   ),
                 ),
-                const Positioned(
-                  left: 64,
-                  top: 17,
-                  child: SizedBox(
-                    width: 180,
-                    height: 18,
-                    child: Text(
-                      'Pesquisar',
-                      style: TextStyle(
-                        color: Color(0x991E1E1E),
-                        fontSize: 18,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+              ),
+
+              SizedBox(
+                height: AppSettings.screenHeight / 30,
+              ),
+
+              //Barra de Pesquisa
+
+              CustomTextField(
+                icon: Icons.search_rounded,
+                label: "Pesquisar",
+                iconSize: 28.0,
+                controller: TextEditingController(),
+              ),
+
+              SizedBox(
+                height: AppSettings.screenHeight / 20,
+              ),
+
+              // Historico de pesquisa
+              SizedBox(
+                width: AppSettings.screenWidth,
+                height: AppSettings.screenHeight / 22,
+                child: Text(
+                  'Histórico de pesquisa',
+                  style: TextStyle(
+                    color: AppColors.grey,
+                    fontSize: 21,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
-              ],
-            ),
-          ),
-
-          // Historico de pesquisa
-          const SizedBox(
-            width: 212,
-            height: 34,
-            child: Text(
-              'Histórico de pesquisa',
-              style: TextStyle(
-                color: Color(0xC11E1E1E),
-                fontSize: 21,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w900,
               ),
-            ),
+              FutureBuilder(future: _recordFuture, builder: (context, AsyncSnapshot snapshot){
+                if(snapshot.data == null) {
+                  return const Center(child: CircularProgressIndicator(),);
+                } else {
+                  return FoodRecord(userFoodsRecords: snapshot.data, filter: snapshot.data,);
+                  
+                }
+              },)
+              
+            ],
           ),
-
-          // filtro de pesquisa
-          // SizedBox(
-          //   //height: 26,
-          //   child: ListView(
-          //     scrollDirection: Axis.horizontal,
-          //     children: <Widget>[
-          //       buildFilter('MUITO ALTO'),
-          //       buildFilter('ALTO'),
-          //       buildFilter('ALTO'),
-          //       buildFilter('ALTO'),
-          //       buildFilter('ALTO')
-          //     ],
-          //   ),
-          // )
-        ],
+        ),
       ),
     );
   }
-
-  Widget buildFilter(String filterName) => SizedBox(
-        width: 65,
-        height: 26,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Container(
-                width: 65,
-                height: 26,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-              ),
-            ),
-            const Positioned(
-              left: 0,
-              top: 0,
-              child: SizedBox(
-                width: 65,
-                height: 26,
-                child: Text(
-                  'teste',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF1E1E1E),
-                    fontSize: 10,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
 }
