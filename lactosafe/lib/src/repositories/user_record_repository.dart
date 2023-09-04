@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:LactoSafe/src/http/http_get_user_record.dart';
+import 'package:LactoSafe/src/model/user_model.dart';
 
 import '../http/exceptions.dart';
 import '../model/info_food_model.dart';
@@ -17,7 +18,7 @@ class UserRecordRepository implements IUserRecordRepository {
   Future<List<FoodModel>> getUserRecord() async {
     final response = await client.post(
         url: 'http://192.168.0.109:5000/historico_alimentos',
-        userId: 1); // pegar id do usuario quando ele logar
+        userId: userStore.getUserId); // pegar id do usuario quando ele logar
     if (response.statusCode == 200) {
       final List<FoodModel> userRecords = [];
       final decodedResponseUserRecord = jsonDecode(response.body);
