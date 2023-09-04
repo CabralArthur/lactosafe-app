@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:LactoSafe/src/model/info_food_model.dart';
 import 'package:LactoSafe/src/shared/app_camera_source.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +15,7 @@ class CameraFoodPicture implements Picture {
     if (sourceType == CameraSource.camera) {
       image = await ImagePicker().pickImage(source: ImageSource.camera);
       if(image != null) {
+        userFoodImage = File(image.path);
          if(context.mounted) {
          Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image.path));
       }
@@ -32,6 +34,7 @@ class GalleryFoodPicture implements Picture {
     if (sourceType == CameraSource.gallery) {
       image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if(image != null) {
+        userFoodImage = File(image.path);
         if(context.mounted) {
         Navigator.popAndPushNamed(context, '/foodlist', arguments: File(image.path));
       }
