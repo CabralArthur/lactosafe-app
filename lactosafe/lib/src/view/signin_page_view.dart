@@ -1,4 +1,5 @@
 import 'package:LactoSafe/src/controller/textfield_controller.dart';
+import 'package:LactoSafe/src/model/user_model.dart';
 import 'package:LactoSafe/src/shared/app_colors.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final TextFieldController textFieldController = TextFieldController();
+  String loginStatus = '';
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,12 @@ class _SignInState extends State<SignIn> {
             flex: 2,
             child: Container(
                 color: Colors.white, child: Image.asset(AppImages.logo)),
+          ),
+          SizedBox(
+            child: Text(
+              loginStatus,
+              style: TextStyle(color: AppColors.orange, fontSize: 18),
+            ),
           ),
           Expanded(
             flex: 3,
@@ -76,16 +84,19 @@ class _SignInState extends State<SignIn> {
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18))),
-                        onPressed: () {
+                        onPressed: () async {
                           String email =
                               textFieldController.getEmailFromTextField();
                           String password =
                               textFieldController.getPasswordFromTextField();
-                          var valueFromLogin = login(email, password);
-                          // ignore: unrelated_type_equality_checks
-                          if (valueFromLogin == true) {
-                            Navigator.popAndPushNamed(context, "/home");
-                          }
+                          var status = await login(email, password, context);
+                          setState(() {
+                            if (status != null) {
+                              if (status['isLogged'] == false) {
+                                loginStatus = status['error'];
+                              }
+                            }
+                          });
                         },
                         child: const Text(
                           'Entrar',
