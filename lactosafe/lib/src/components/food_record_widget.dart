@@ -140,7 +140,7 @@ class _FoodRecordState extends State<FoodRecord> {
                           filterColor(filterName: 'Muito Alto');
                           if (filterMuitoAlto == true) {
                             for (int i = 0;
-                                i < widget.userFoodsRecords.length - 1;
+                                i < widget.userFoodsRecords.length;
                                 i++) {
                               if (widget
                                       .userFoodsRecords[i].getLactoseRiskStr ==
@@ -182,7 +182,7 @@ class _FoodRecordState extends State<FoodRecord> {
                           filterColor(filterName: 'Alto');
                           if (filterAlto == true) {
                             for (int i = 0;
-                                i < widget.userFoodsRecords.length - 1;
+                                i < widget.userFoodsRecords.length;
                                 i++) {
                               if (widget
                                       .userFoodsRecords[i].getLactoseRiskStr ==
@@ -225,7 +225,7 @@ class _FoodRecordState extends State<FoodRecord> {
                           filterColor(filterName: 'Medio');
                           if (filterMedio == true) {
                             for (int i = 0;
-                                i < widget.userFoodsRecords.length - 1;
+                                i < widget.userFoodsRecords.length;
                                 i++) {
                               if (widget
                                       .userFoodsRecords[i].getLactoseRiskStr ==
@@ -265,7 +265,7 @@ class _FoodRecordState extends State<FoodRecord> {
                           filterColor(filterName: 'Baixo');
                           if (filterBaixo == true) {
                             for (int i = 0;
-                                i < widget.userFoodsRecords.length - 1;
+                                i < widget.userFoodsRecords.length;
                                 i++) {
                               if (widget
                                       .userFoodsRecords[i].getLactoseRiskStr ==
@@ -306,8 +306,9 @@ class _FoodRecordState extends State<FoodRecord> {
                           filterColor(filterName: 'Inexistente');
                           if (filterInexistente == true) {
                             for (int i = 0;
-                                i < widget.userFoodsRecords.length - 1;
+                                i < widget.userFoodsRecords.length;
                                 i++) {
+                                  
                               if (widget
                                       .userFoodsRecords[i].getLactoseRiskStr ==
                                   "Inexistente") {

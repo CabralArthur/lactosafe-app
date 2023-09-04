@@ -171,7 +171,7 @@ Widget listFoodWidget(
     {required BuildContext context,
     required List<FoodModel> foods,
     required int index}) {
-  debugPrint(foods[index].getFoodName); //debug
+  
   double cardHeight = AppSettings.screenHeight / 5.5;
   return Container(
     padding: const EdgeInsets.all(8.0),

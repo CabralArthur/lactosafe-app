@@ -1,17 +1,21 @@
-import 'dart:io';
 
 class User {
-  File? _picture;
+  late final int userId;
+  late String? userName;
+  
+  User({required this.userId, this.userName});
 
-  User(this._picture);
+  String? get getUserName => userName;
+  int get getUserId => userId;
 
+  void setUserName(String newUserName) {
+    userName = newUserName;
+  }
 
-  File? get getPicture => _picture;
-
-  void setImage(File? image) {
-    _picture = image;
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(userId: map['userID'],);
   }
 
 }
 
-List<User> userPicture = []; 
+late final User userStore;
