@@ -29,6 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
           Expanded(
             flex: 4,
             child: SingleChildScrollView(
+              padding: const EdgeInsets.all(30.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -38,10 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                            side: BorderSide(color: AppColors.grey),
-                          ),
+                          shape: const StadiumBorder()
                         ),
                         onPressed: () {},
                         child: Text(
@@ -68,13 +66,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       width: 400,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 70),
+                        
                           backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                            side: BorderSide(color: AppColors.grey),
-                          ),
+                          shape: const StadiumBorder()
                         ),
                         onPressed: () {
                           Navigator.popAndPushNamed(

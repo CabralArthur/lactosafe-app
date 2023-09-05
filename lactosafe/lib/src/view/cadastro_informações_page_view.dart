@@ -1,8 +1,13 @@
+import 'dart:async';
+
+import 'package:LactoSafe/src/controller/cadastro_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
 import 'package:LactoSafe/src/controller/textfield_controller.dart';
 import 'package:LactoSafe/src/components/CustomDropdown.dart';
+
+import '../shared/app_colors.dart';
 
 class CadastroInformation extends StatefulWidget {
   const CadastroInformation({Key? key}) : super(key: key);
@@ -20,6 +25,7 @@ class CadastroInformationState extends State<CadastroInformation> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
             Image.asset(AppImages.logo_letter_row),
@@ -43,7 +49,7 @@ class CadastroInformationState extends State<CadastroInformation> {
             CustomTextField(
               icon: Icons.email,
               label: "nome@dominio.com",
-              controller: TextEditingController(),
+              controller: textFieldController.emailController,
               validator: (value) {
                 return null;
               },
@@ -59,7 +65,7 @@ class CadastroInformationState extends State<CadastroInformation> {
               icon: Icons.lock,
               label: "Insira sua senha",
               isObscure: true,
-              controller: TextEditingController(),
+              controller: textFieldController.passwordController,
               validator: (value) {
                 return null;
               },
@@ -89,7 +95,7 @@ class CadastroInformationState extends State<CadastroInformation> {
             CustomTextField(
               icon: Icons.map,
               label: "Insira o seu endereço",
-              controller: TextEditingController(),
+              controller: textFieldController.enderecoController,
               validator: (value) {
                 return null;
               },
@@ -115,17 +121,38 @@ class CadastroInformationState extends State<CadastroInformation> {
           child: SizedBox(
             height: 50,
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18),
-                ),
-              ),
-              onPressed: () {
+              style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
+              onPressed: () async {
                 String email = textFieldController.getEmailFromTextField();
                 String password =
                     textFieldController.getPasswordFromTextField();
                 String username = textFieldController.getGenericNameTextField();
-                String endereco = textFieldController.getGenericNameTextField();
+                String endereco =
+                    textFieldController.getEnderecoNameTextField();
+                String tipoIntolerancia = selectedOption;
+                print("${email}, ${password}");
+                bool isRegistered = await Cadastro(email, password, username,
+                    endereco, tipoIntolerancia, context);
+                if (isRegistered) {
+                  if (context.mounted) {
+                    showDialog(
+                      barrierDismissible: false,
+                        context: context,
+                        builder: (BuildContext context) {
+                          Timer(const Duration(seconds: 3), () {
+                            Navigator.popAndPushNamed(context, '/SignIn');
+                          });
+
+                          return AlertDialog(
+                            title: Text("Cadastro realizado com sucesso!", style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  color: AppColors.grey),),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                          );
+                        });
+                  }
+                }
               },
               child: const Text(
                 'Concluir Cadastro',
