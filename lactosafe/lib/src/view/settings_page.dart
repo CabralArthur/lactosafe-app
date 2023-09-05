@@ -57,6 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
               SizedBox(height: AppSettings.screenHeight/25,),
 
               TextButton(onPressed: () {}, child: Text("Redefinir Senha", style: TextStyle(color: AppColors.orange, fontSize: 20.0, fontWeight: FontWeight.w600),)),
+              TextButton(onPressed: () { Navigator.popAndPushNamed(context, "/SignIn");}, child: Text("Sair", style: TextStyle(color: AppColors.orange, fontSize: 20.0, fontWeight: FontWeight.w600),)),
 
               ],
             )
