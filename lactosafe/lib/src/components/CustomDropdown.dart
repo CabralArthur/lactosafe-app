@@ -63,6 +63,8 @@ class _CustomDropdownWidgetState extends State<CustomDropdownWidget> {
               return ListTile(
                 title: Text(option),
                 onTap: () {
+                  // Call the setSelectedOption method here
+                  setSelectedOption(option);
                   Navigator.pop(context, option);
                 },
               );
@@ -71,11 +73,12 @@ class _CustomDropdownWidgetState extends State<CustomDropdownWidget> {
         );
       },
     );
+  }
 
-    if (option != null) {
-      setState(() {
-        selectedOption = option;
-      });
-    }
+  // Define setSelectedOption method outside of _showOptions
+  void setSelectedOption(String option) {
+    setState(() {
+      selectedOption = option;
+    });
   }
 }
