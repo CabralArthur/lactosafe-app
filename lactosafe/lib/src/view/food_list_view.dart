@@ -135,6 +135,7 @@ class _FoodListViewState extends State<FoodListView> {
                     ),
                     child: InkWell(
                       onTap: () {
+
                         Navigator.popAndPushNamed(context, "/missingPage");
                       },
                       borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -170,7 +171,7 @@ Widget listFoodWidget(
     {required BuildContext context,
     required List<FoodModel> foods,
     required int index}) {
-  debugPrint(foods[index].getFoodName); //debug
+  
   double cardHeight = AppSettings.screenHeight / 5.5;
   return Container(
     padding: const EdgeInsets.all(8.0),
@@ -244,7 +245,7 @@ Widget listFoodWidget(
                       TextSpan(
                         children: [
                           TextSpan(
-                            text: '${foods[index].getChanceLactose}% ',
+                            text: '${foods[index].getChanceAlimento}% ',
                             style: TextStyle(
                               color: AppColors.orange,
                               fontSize: 16,

@@ -11,7 +11,7 @@ O LactoSafe é uma solução desenvolvida para auxiliar pessoas intolerantes à 
 
 ## ✒️ Autores
 
-* **Graziela Felix** - *Views e Controllers: home, informação do alimento, camera, settings* - [GrazielaFelix](https://github.com/Grazifelix)
+* **Graziela Felix** - *Views, components, Controllers, http e repositories: home, lista de alimentos, informação do alimento, camera, settings* - [GrazielaFelix](https://github.com/Grazifelix)
 
 ## 📄 Licença
 
