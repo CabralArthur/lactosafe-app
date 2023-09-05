@@ -1,3 +1,4 @@
+import 'package:LactoSafe/src/controller/cadastro_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:LactoSafe/src/components/custom_text_field.dart';
 import 'package:LactoSafe/src/shared/app_images.dart';
@@ -125,7 +126,11 @@ class CadastroInformationState extends State<CadastroInformation> {
                 String password =
                     textFieldController.getPasswordFromTextField();
                 String username = textFieldController.getGenericNameTextField();
-                String endereco = textFieldController.getGenericNameTextField();
+                String endereco =
+                    textFieldController.getEnderecoNameTextField();
+                String tipoIntolerancia = selectedOption;
+                Cadastro(email, password, username, endereco, tipoIntolerancia,
+                    context);
               },
               child: const Text(
                 'Concluir Cadastro',
@@ -138,3 +143,4 @@ class CadastroInformationState extends State<CadastroInformation> {
     );
   }
 }
+
