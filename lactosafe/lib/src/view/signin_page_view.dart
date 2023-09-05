@@ -82,8 +82,7 @@ class _SignInState extends State<SignIn> {
                       height: 50,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18))),
+                            shape: const StadiumBorder()),
                         onPressed: () async {
                           String email =
                               textFieldController.getEmailFromTextField();

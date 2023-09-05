@@ -117,9 +117,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     height: 50,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
-                        ),
+                        shape: const StadiumBorder()
                       ),
                       onPressed: () {
                         goToNextPage();

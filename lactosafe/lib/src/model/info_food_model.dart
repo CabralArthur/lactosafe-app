@@ -55,3 +55,4 @@ class FoodModel {
   }
 }
 
+late File? userFoodImage; //variavel para armazenar a foto que usuario tirou com a camera ou selecionou da galeria, para testes da tela de cadastro de alimento

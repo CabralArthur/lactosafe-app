@@ -55,6 +55,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                       SizedBox(
                         height: 50,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder()
+                          ),
+                         
                           onPressed: () => submitForm(_formkey, context),
                           child: const Row(
                             mainAxisSize: MainAxisSize.min,
