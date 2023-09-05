@@ -4,6 +4,7 @@ class TextFieldController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController genericController = TextEditingController();
+  final TextEditingController enderecoController = TextEditingController();
 
   // Function to get the password from the password TextField
   String getPasswordFromTextField() {
@@ -17,5 +18,9 @@ class TextFieldController {
 
   String getGenericNameTextField() {
     return genericController.text;
+  }
+
+  String getEnderecoNameTextField() {
+    return enderecoController.text;
   }
 }
